@@ -1,0 +1,8 @@
+.Chat {
+  background-color: var(--main-bg-color);
+  opacity: 80%;
+  border-radius: var(--default-border-r);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

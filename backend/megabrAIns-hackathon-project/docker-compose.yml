@@ -9,6 +9,7 @@ services:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
       POSTGRES_DB: datadb
+#      what do you mean datadb? dataDATAbase?
     ports:
       - "5432:5432"
     volumes:

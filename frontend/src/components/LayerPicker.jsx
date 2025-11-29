@@ -3,39 +3,42 @@ import {useState} from "react";
 import {useLayerContext} from "../contexts/LayerContext.jsx";
 
 function LayerPicker({ className }) {
-  const { enableHeatmap, disableHeatmap } = useLayerContext();
+  const { availableLayers, enableHeatmap, disableHeatmap } = useLayerContext();
 
-  const layers = [0, 1, 2, 3];
-  const [checked, setChecked] = useState({
-    0: false,
-    1: false,
-    2: false,
-    3: false
-  });
+  const layerKeys = Object.keys(availableLayers);
 
-  const handleChange = (id) => {
-    const newValue = !checked[id];
-    setChecked(prev => ({ ...prev, [id]: newValue }));
+  const initialState = Object.fromEntries(
+    layerKeys.map(key => [key, false])
+  );
 
-    const heatmapKey = `heat${id + 1}`;
+  const [checked, setChecked] = useState(initialState);
+
+  const handleChange = (layerId) => {
+    const newValue = !checked[layerId];
+
+    setChecked(prev => ({
+      ...prev,
+      [layerId]: newValue
+    }));
 
     if (newValue) {
-      enableHeatmap(heatmapKey);
+      enableHeatmap(layerId);
     } else {
-      disableHeatmap(heatmapKey);
+      disableHeatmap(layerId);
     }
   };
 
+
   return (
     <div className={styles.LayerPicker + ' ' + (className || '')}>
-      {layers.map(id => (
-        <label key={id} style={{ display: "block", marginBottom: "5px" }}>
+      {layerKeys.map(layerId => (
+        <label key={layerId} style={{ display: "block", marginBottom: "5px" }}>
           <input
             type="checkbox"
-            checked={checked[id]}
-            onChange={() => handleChange(id)}
+            checked={checked[layerId]}
+            onChange={() => handleChange(layerId)}
           />
-          {id}
+          {availableLayers[layerId].name}
         </label>
       ))}
     </div>

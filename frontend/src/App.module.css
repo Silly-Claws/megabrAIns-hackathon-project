@@ -22,6 +22,9 @@
 
 .LayerPicker {
   position: absolute;
+
+  height: calc(100vh - var(--header-height));
+
   top: var(--header-height);
   right: 0;
 

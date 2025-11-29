@@ -6,14 +6,30 @@ import {deleteHeatMap, setHeatMap,} from "../components/mapUtils/HeatMap.js";
 const LayerContext = createContext(null);
 
 export function LayerContextProvider({ children }) {
-  const [currentHeatmapId, setCurrentHeatmapId] = useState(null);
   const [mapRef, setMapRef] = useState(null);
-  const [heatRef, setHeatRef] = useState(null);
   const activeHeatIdsRef = useRef([]);
   const heatLayersRef = useRef({});
 
+  const availableLayers = {
+    "population": {
+      name: "Population",
+    },
+    "transportation": {
+      name: "Transportation",
+    },
+    "education": {
+      name: "Education",
+    },
+    "socialServices": {
+      name: "Social services",
+    },
+    "culture": {
+      name: "Culture",
+    },
+  }
+
   const heatmaps = {
-    heat1: {
+    population: {
       points: [
         [48.721182, 21.257564, 1],
         [48.722, 21.26, 0.8],
@@ -21,11 +37,11 @@ export function LayerContextProvider({ children }) {
       ],
       gradient: {
         0.0: "rgba(0,0,0,0)",
-        0.5: "rgba(0,128,0,0.5)",
-        1.0: "rgba(0,255,0,1)"
+        0.5: "rgba(255,0,0,0.5)",
+        1.0: "rgba(255,100,100,1)"
       }
     },
-    heat2: {
+    transportation: {
       points: [
         [48.722, 21.257, 1],
         [48.723, 21.26, 0.7],
@@ -33,11 +49,11 @@ export function LayerContextProvider({ children }) {
       ],
       gradient: {
         0.0: "rgba(0,0,0,0)",
-        0.5: "rgba(255,0,0,0.5)",
-        1.0: "rgba(255,100,100,1)"
+        0.5: "rgba(0,0,255,0.5)",
+        1.0: "rgba(100,100,255,1)"
       }
     },
-    heat3: {
+    education: {
       points: [
         [48.721, 21.259, 0.8],
         [48.7195, 21.258, 0.7],
@@ -45,11 +61,11 @@ export function LayerContextProvider({ children }) {
       ],
       gradient: {
         0.0: "rgba(0,0,0,0)",
-        0.5: "rgba(0,0,255,0.5)",
-        1.0: "rgba(100,100,255,1)"
+        0.5: "rgba(0,128,0,0.5)",
+        1.0: "rgba(0,255,0,1)"
       }
     },
-    heat4: {
+    socialServices: {
       points: [
         [48.7225, 21.256, 0.7],
         [48.7205, 21.259, 0.8],
@@ -60,7 +76,19 @@ export function LayerContextProvider({ children }) {
         0.5: "rgba(255,255,0,0.5)",
         1.0: "rgba(255,255,100,1)"
       }
-    }
+    },
+    culture: {
+      points: [
+        [48.722, 21.257, 1],
+        [48.723, 21.26, 0.7],
+        [48.720, 21.254, 0.6],
+      ],
+      gradient: {
+        0.0: "rgba(0,0,0,0)",
+        0.5: "rgba(255,0,242,0.5)",
+        1.0: "rgb(216,100,255)"
+      }
+    },
   };
 
   function enableHeatmap(id) {
@@ -95,7 +123,7 @@ export function LayerContextProvider({ children }) {
   }
 
   return (
-    <LayerContext.Provider value={{ setMapRef, enableHeatmap, disableHeatmap, disableAllHeatmaps }}>
+    <LayerContext.Provider value={{ setMapRef, availableLayers, enableHeatmap, disableHeatmap, disableAllHeatmaps }}>
       {children}
     </LayerContext.Provider>
   );

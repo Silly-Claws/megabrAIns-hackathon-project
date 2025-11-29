@@ -2,6 +2,7 @@ package sk.sillyclaws.megabrainshackathonproject.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import sk.sillyclaws.megabrainshackathonproject.config.CoordinatesConfig;
 import sk.sillyclaws.megabrainshackathonproject.models.Point;
 import sk.sillyclaws.megabrainshackathonproject.models.WeightedPoint;
 import sk.sillyclaws.megabrainshackathonproject.repository.PopulationRepository;
@@ -15,8 +16,6 @@ public class LayersService {
 
     private final PopulationRepository populationRepository;
     private final GridGeneratorService gridGeneratorService;
-
-    private final List<Point> gridPoints = gridGeneratorService.generateGrid();
 
     private List<WeightedPoint> normalizePoints(List<WeightedPoint> points) {
         float max = points.stream()
@@ -40,16 +39,37 @@ public class LayersService {
     }
 
     public List<WeightedPoint> getPopulationLayerGridded() {
-        List<WeightedPoint> populationPointsGridded = new ArrayList<>();
 
-        for (Point point : gridPoints) {
-            WeightedPoint wp = new WeightedPoint();
+        List<WeightedPoint> result = new ArrayList<>();
+        double halfMeters = CoordinatesConfig.DISTANCE / 2.0;
 
+        for (Point gp : gridGeneratorService.generateGrid()) {
 
+//            System.out.println(gp);
 
-            populationPointsGridded.add(wp);
+            // convert search radius from meters → degrees
+            double metersPerDegLat = 111_320.0;
+            double metersPerDegLon =
+                    111_320.0 * Math.cos(Math.toRadians(gp.lat()));
+
+            double halfLat = halfMeters / metersPerDegLat;
+            double halfLon = halfMeters / metersPerDegLon;
+
+            System.out.println((gp.lat() - halfLat) + " " + (gp.lat() + halfLat));
+            System.out.println((gp.lon() - halfLon) + " " + (gp.lon() + halfLon));
+
+            float people = populationRepository.getPopulationInArea(
+                    gp.lat() - halfLat, gp.lat() + halfLat,
+                    gp.lon() - halfLon, gp.lon() + halfLon
+            );
+
+//            System.out.println(people);
+
+            if (people > 0) {
+                result.add(new WeightedPoint(gp, people));
+            }
         }
 
-        return normalizePoints(populationPointsGridded);
+        return normalizePoints(result);
     }
 }

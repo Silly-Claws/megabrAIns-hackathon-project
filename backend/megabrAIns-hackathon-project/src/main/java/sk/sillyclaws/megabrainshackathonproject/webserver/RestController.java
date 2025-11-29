@@ -36,7 +36,7 @@ public class RestController {
         List<Layer> layers = new ArrayList<>();
 
         if (population) {
-            layers.add(new Layer("population", "Population Density", layersService.getPopulationLayerPoints()));
+            layers.add(new Layer("population", "Population Density", layersService.getPopulationLayerGridded()));
         }
         if (transportation) {
 

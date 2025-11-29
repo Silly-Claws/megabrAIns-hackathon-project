@@ -2,7 +2,6 @@ package sk.sillyclaws.megabrainshackathonproject.repository;
 
 import lombok.RequiredArgsConstructor;
 import sk.sillyclaws.megabrainshackathonproject.models.Point;
-import sk.sillyclaws.megabrainshackathonproject.models.HousePopulationEntity;
 import org.springframework.stereotype.Repository;
 import sk.sillyclaws.megabrainshackathonproject.models.WeightedPoint;
 
@@ -26,5 +25,7 @@ public class PopulationRepository {
                 .toList();
     }
 
-
+    public float getPopulationInArea(double latMin, double latMax, double lonMin, double lonMax) {
+        return housePopulationJpa.getPopulationInArea(latMin, latMax, lonMin, lonMax);
+    }
 }

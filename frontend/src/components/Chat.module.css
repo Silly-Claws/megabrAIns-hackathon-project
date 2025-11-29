@@ -16,4 +16,28 @@
   border-radius: var(--default-border-r);
   outline: none;
   border: none;
+  flex-grow: 1;
+  padding: var(--default-spacing);
+}
+
+.Chat__wrapper {
+  display: flex;
+  gap: var(--default-spacing);
+  padding: var(--default-spacing);
+  align-items: center;
+}
+
+.Button {
+  height: 40px;
+  width: 80px;
+  border-radius: var(--default-border-r);
+
+  outline: none;
+  border: none;
+}
+
+.Button:hover {
+  scale: 1.05;
+  transition: 300ms;
+  cursor: pointer;
 }

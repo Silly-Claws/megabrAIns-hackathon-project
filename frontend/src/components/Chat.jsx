@@ -1,29 +1,23 @@
 import { useState } from "react";
 import styles from "./Chat.module.css";
 
-function Chat({ className }) {
-  const [value, setValue] = useState("");
-
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
-
-  const handleSendQuery = (value) => {
-    console.log(value);
-  };
-
+function Chat({ className, handleChange, inputValue }) {
   return (
     <div className={styles.Chat + " " + (className || "")}>
       <div className={styles.Menu__arrowIcon__wrapper}>
         <span>Minimize icon</span>
       </div>
 
-      <textarea
-        className={styles.Chat__input}
-        value={value}
-        onChange={handleChange}
-        rows={4}
-      />
+      <div className={styles.Chat__wrapper}>
+        <button className={styles.Button}>Send</button>
+        <textarea
+          className={styles.Chat__input}
+          value={inputValue}
+          onChange={handleChange}
+          rows={4}
+        />
+        <button className={styles.Button}>Send</button>
+      </div>
     </div>
   );
 }

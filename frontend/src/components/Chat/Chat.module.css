@@ -1,5 +1,5 @@
 .Chat {
-  /*min-width: 350px;*/
+  border-radius: var(--default-border-r);
 
   border-radius: 24px;
   display: flex;
@@ -44,7 +44,6 @@
   cursor: pointer;
 }
 
-
 .Chat__history {
   display: flex;
   flex-direction: column;
@@ -52,6 +51,8 @@
   /* keep scrolling functional but hide native scrollbars */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  gap: 12px;
+  padding: var(--spacing-md);
 }
 
 /* Chrome, Safari, Opera */
@@ -126,4 +127,10 @@
   display: flex;
 
   justify-content: end;
+}
+
+.GPT__Message {
+  display: flex;
+
+  justify-content: start;
 }

@@ -30,3 +30,24 @@
 
   max-height: calc(100vh - var(--header-height));
 }
+.Chat {
+  width: 400px;
+  height: calc(100vh - var(--header-height) - 16px - 16px);
+  position: absolute;
+
+  top: calc(var(--header-height) + 16px);
+  right: 16px;
+
+  z-index: 1000;
+}
+
+.MobileChat {
+  width: calc(100% - 16px - 16px);
+  position: absolute;
+
+  bottom: 16px;
+  right: 16px;
+  left: 16px;
+
+  z-index: 1000;
+}

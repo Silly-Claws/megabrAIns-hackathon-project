@@ -5,6 +5,9 @@
   --header-color: #ffffff;
 
   --header-height: 48px;
+
+  --default-border-r: 12px;
+  --default-spacing: 8px;
 }
 
 #root {

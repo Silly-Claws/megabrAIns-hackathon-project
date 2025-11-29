@@ -11,7 +11,7 @@ services:
       POSTGRES_DB: datadb
 #      what do you mean datadb? dataDATAbase?
     ports:
-      - "15433:5432"
+      - "5432:5432"
     volumes:
       - ./db-init:/docker-entrypoint-initdb.d
 

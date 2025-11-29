@@ -10,26 +10,27 @@ import java.util.List;
 @Service
 public class GridGeneratorService {
 
+    private final List<Point> points = new ArrayList<>();
+
     public List<Point> generateGrid() {
+        if (points.isEmpty()) {
+            double topLat = Math.max(CoordinatesConfig.TOP_LEFT.lat(), CoordinatesConfig.BOTTOM_RIGHT.lat());
+            double bottomLat = Math.min(CoordinatesConfig.TOP_LEFT.lat(), CoordinatesConfig.BOTTOM_RIGHT.lat());
+            double leftLon = Math.min(CoordinatesConfig.TOP_LEFT.lon(), CoordinatesConfig.BOTTOM_RIGHT.lon());
+            double rightLon = Math.max(CoordinatesConfig.TOP_LEFT.lon(), CoordinatesConfig.BOTTOM_RIGHT.lon());
 
-        List<Point> points = new ArrayList<>();
+            double avgLat = (topLat + bottomLat) / 2;
 
-        double topLat = Math.max(CoordinatesConfig.TOP_LEFT.lat(), CoordinatesConfig.BOTTOM_RIGHT.lat());
-        double bottomLat = Math.min(CoordinatesConfig.TOP_LEFT.lat(), CoordinatesConfig.BOTTOM_RIGHT.lat());
-        double leftLon = Math.min(CoordinatesConfig.TOP_LEFT.lon(), CoordinatesConfig.BOTTOM_RIGHT.lon());
-        double rightLon = Math.max(CoordinatesConfig.TOP_LEFT.lon(), CoordinatesConfig.BOTTOM_RIGHT.lon());
+            double metersPerDegLat = 111_320.0;
+            double metersPerDegLon = 111_320.0 * Math.cos(Math.toRadians(avgLat));
 
-        double avgLat = (topLat + bottomLat) / 2;
+            double dLat = CoordinatesConfig.DISTANCE / metersPerDegLat;
+            double dLon = CoordinatesConfig.DISTANCE / metersPerDegLon;
 
-        double metersPerDegLat = 111_320.0;
-        double metersPerDegLon = 111_320.0 * Math.cos(Math.toRadians(avgLat));
-
-        double dLat = CoordinatesConfig.DISTANCE / metersPerDegLat;
-        double dLon = CoordinatesConfig.DISTANCE / metersPerDegLon;
-
-        for (double lat = bottomLat; lat <= topLat; lat += dLat) {
-            for (double lon = leftLon; lon <= rightLon; lon += dLon) {
-                points.add(new Point(lat, lon));
+            for (double lat = bottomLat; lat <= topLat; lat += dLat) {
+                for (double lon = leftLon; lon <= rightLon; lon += dLon) {
+                    points.add(new Point(lat, lon));
+                }
             }
         }
 

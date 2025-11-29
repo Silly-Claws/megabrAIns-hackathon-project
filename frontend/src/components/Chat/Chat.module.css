@@ -41,3 +41,21 @@
   transition: 300ms;
   cursor: pointer;
 }
+
+.Layer__list {
+  display: flex;
+  flex-direction: column;
+  padding: var(--default-spacing);
+  overflow: hidden;
+}
+
+.Layer__item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.Layer__item:hover {
+  background-color: rgba(124, 92, 255, 0.1);
+}

@@ -35,13 +35,14 @@
 
   max-height: calc(100vh - var(--header-height));
 }
+
 .Chat {
   width: 400px;
-  height: calc(100vh - var(--header-height) - 16px - 16px);
+  height: calc(100vh - var(--header-height) - 16px - 8px);
   position: absolute;
 
   top: calc(var(--header-height) + 16px);
-  right: 16px;
+  right: 8px;
 
   z-index: 1000;
 }

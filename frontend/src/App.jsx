@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import styles from "./App.module.css";
+import "./App.module.css";
+import Header from "./components/Header.jsx";
+import Map from "./components/Map.jsx";
+import LayerPicker from "./components/LayerPicker.jsx";
+import Chat from "./components/Chat.jsx";
+import MobileChat from "./components/MobileChat.jsx";
+import { useState } from "react";
+import { useWindow } from "./hooks/useWindow.js";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [value, setValue] = useState("");
+  const { windowWidth } = useWindow();
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleSendQuery = (value) => {
+    console.log(value);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className={styles.Main__wrapper}>
+      <Header className={styles.Header} />
+      <Map className={styles.Map} />
+      <LayerPicker className={styles.LayerPicker} />
+      {windowWidth > 478 ? (
+        <Chat
+          className={styles.Chat}
+          inputValue={value}
+          handleChange={handleChange}
+          handleSendQuery={handleSendQuery}
+        />
+      ) : (
+        <MobileChat className={styles.MobileChat} />
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;

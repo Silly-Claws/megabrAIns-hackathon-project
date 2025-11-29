@@ -1,0 +1,53 @@
+.Main__wrapper {
+  width: 100%;
+  height: 100vh;
+
+  background-color: var(--main-bg-color);
+}
+
+.Header {
+  width: 100%;
+
+  position: sticky;
+
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.Map {
+  width: 100%;
+  max-height: calc(100vh - var(--header-height));
+}
+
+.LayerPicker {
+  position: absolute;
+
+  height: calc(100vh - var(--header-height));
+
+  top: var(--header-height);
+  right: 0;
+
+  max-height: calc(100vh - var(--header-height));
+}
+.Chat {
+  width: 400px;
+  height: calc(100vh - var(--header-height) - 16px - 16px);
+  position: absolute;
+
+  top: calc(var(--header-height) + 16px);
+  right: 16px;
+
+  z-index: 1000;
+}
+
+.MobileChat {
+  width: calc(100% - 16px - 16px);
+  position: absolute;
+
+  bottom: 16px;
+  right: 16px;
+  left: 16px;
+
+  z-index: 1000;
+}

@@ -1,10 +1,48 @@
 .Chat {
-  background-color: var(--main-bg-color);
-  opacity: 80%;
   border-radius: var(--default-border-r);
+
+  border-radius: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+}
+
+.Menu__arrowIcon__wrapper {
+  width: auto;
+  height: fit-content;
+
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.Toggle__button {
+  height: 36px;
+  width: 36px;
+  border-radius: var(--default-border-r);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  outline: none;
+  border: none;
+}
+
+.Toggle__button__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.Toggle__button:hover {
+  scale: 1.05;
+  transition: 300ms;
+  cursor: pointer;
 }
 
 .Chat__input {

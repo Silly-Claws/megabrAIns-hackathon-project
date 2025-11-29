@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import {createContext, useContext, useRef, useState} from "react";
+import {createContext, useContext, useEffect, useRef, useState} from "react";
 import {deleteHeatMap, setHeatMap,} from "../components/mapUtils/HeatMap.js";
 
 const LayerContext = createContext(null);
@@ -9,6 +9,29 @@ export function LayerContextProvider({ children }) {
   const [mapRef, setMapRef] = useState(null);
   const activeHeatIdsRef = useRef([]);
   const heatLayersRef = useRef({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://localhost:8080/map?population=true`);
+        if (!response.ok) throw new Error("Network response was not ok");
+        const result = await response.json();
+
+        const populationData = result.find(layer => layer.name === "population");
+        if (populationData && populationData.points) {
+          heatmaps.population.points = populationData.points.map(p => [
+            p.coordinate.lat,
+            p.coordinate.lon,
+            p.weight
+          ]);
+        }
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+
+    fetchData();
+  }, [])
 
   const availableLayers = {
     "population": {

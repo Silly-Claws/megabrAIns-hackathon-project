@@ -3,8 +3,8 @@ import "./App.module.css";
 import Header from "./components/Header.jsx";
 import Map from "./components/Map.jsx";
 import LayerPicker from "./components/LayerPicker.jsx";
-import Chat from "./components/Chat.jsx";
-import MobileChat from "./components/MobileChat.jsx";
+import Chat from "./components/Chat/Chat.jsx";
+import MobileChat from "./components/Chat/MobileChat.jsx";
 import { useState } from "react";
 import { useWindow } from "./hooks/useWindow.js";
 

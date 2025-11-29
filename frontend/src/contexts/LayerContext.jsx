@@ -6,52 +6,7 @@ import {deleteHeatMap, setHeatMap,} from "../components/mapUtils/HeatMap.js";
 const LayerContext = createContext(null);
 
 export function LayerContextProvider({ children }) {
-  const [mapRef, setMapRef] = useState(null);
-  const activeHeatIdsRef = useRef([]);
-  const heatLayersRef = useRef({});
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`http://localhost:8080/map?population=true`);
-        if (!response.ok) throw new Error("Network response was not ok");
-        const result = await response.json();
-
-        const populationData = result.find(layer => layer.name === "population");
-        if (populationData && populationData.points) {
-          heatmaps.population.points = populationData.points.map(p => [
-            p.coordinate.lat,
-            p.coordinate.lon,
-            p.weight
-          ]);
-        }
-      } catch (err) {
-        console.error(err.message);
-      }
-    };
-
-    fetchData();
-  }, [])
-
-  const availableLayers = {
-    "population": {
-      name: "Population",
-    },
-    "transportation": {
-      name: "Transportation",
-    },
-    "education": {
-      name: "Education",
-    },
-    "socialServices": {
-      name: "Social services",
-    },
-    "culture": {
-      name: "Culture",
-    },
-  }
-
-  const heatmaps = {
+  const [heatmaps, setHeatmaps] = useState({
     population: {
       points: [
         [48.721182, 21.257564, 1],
@@ -112,7 +67,58 @@ export function LayerContextProvider({ children }) {
         1.0: "rgb(216,100,255)"
       }
     },
-  };
+  });
+
+  const [mapRef, setMapRef] = useState(null);
+  const activeHeatIdsRef = useRef([]);
+  const heatLayersRef = useRef({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/map?population=true`);
+        if (!response.ok) throw new Error("Network response was not ok");
+        const result = await response.json();
+
+        const populationData = result.find(layer => layer.name === "population");
+        if (populationData && populationData.points) {
+          setHeatmaps(prev => ({
+            ...prev,
+            population: {
+              ...prev.population,
+              points: populationData.points.map(p => [
+                p.coordinate.lat,
+                p.coordinate.lon,
+                p.weight
+              ])
+            }
+          }));
+        }
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+
+    fetchData();
+  }, [])
+
+  const availableLayers = {
+    "population": {
+      name: "Population",
+    },
+    "transportation": {
+      name: "Transportation",
+    },
+    "education": {
+      name: "Education",
+    },
+    "socialServices": {
+      name: "Social services",
+    },
+    "culture": {
+      name: "Culture",
+    },
+  }
 
   function enableHeatmap(id) {
     if (!id || !mapRef.current) return;

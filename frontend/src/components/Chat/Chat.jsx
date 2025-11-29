@@ -1,12 +1,13 @@
 import { useState } from "react";
 import styles from "./Chat.module.css";
 import { AnimatePresence, motion } from "framer-motion";
+import stylesGlass from "../Glass.module.css";
 
 function Chat({ className, handleChange, inputValue }) {
   const [showLayers, setShowLayers] = useState(false);
 
   return (
-    <div className={styles.Chat + " " + (className || "")}>
+    <div className={styles.Chat + " " + (className || "") + ' ' + stylesGlass.Glass}>
       <div className={styles.Menu__arrowIcon__wrapper}>
         <span>Minimize icon</span>
       </div>

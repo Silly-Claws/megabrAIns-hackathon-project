@@ -1,0 +1,7 @@
+.LayerPicker {
+    width: 200px;
+
+    background-color: lightblue;
+
+    z-index: 1000;
+}

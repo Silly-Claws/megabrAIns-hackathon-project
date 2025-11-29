@@ -19,3 +19,11 @@
   width: 100%;
   max-height: calc(100vh - var(--header-height));
 }
+
+.LayerPicker {
+  position: absolute;
+  top: var(--header-height);
+  right: 0;
+
+  max-height: calc(100vh - var(--header-height));
+}

@@ -1,0 +1,19 @@
+.Chat {
+  background-color: var(--main-bg-color);
+  opacity: 80%;
+  border-radius: var(--default-border-r);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Menu__arrowIcon__wrapper {
+  padding: var(--default-spacing);
+}
+
+.Chat__input {
+  margin: 8px;
+  border-radius: var(--default-border-r);
+  outline: none;
+  border: none;
+}

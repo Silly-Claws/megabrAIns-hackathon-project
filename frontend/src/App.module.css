@@ -23,7 +23,6 @@
 
   position: absolute;
 
-
   z-index: 100;
 }
 
@@ -38,7 +37,6 @@
   max-height: calc(100vh - var(--header-height));
 }
 .Chat {
-  width: 400px;
   height: calc(100vh - var(--header-height) - 16px - 16px);
   position: absolute;
 

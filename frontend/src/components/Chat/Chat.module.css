@@ -1,6 +1,5 @@
 .Chat {
   background-color: var(--main-bg-color);
-  opacity: 80%;
   border-radius: var(--default-border-r);
   display: flex;
   flex-direction: column;
@@ -9,6 +8,22 @@
 
 .Menu__arrowIcon__wrapper {
   padding: var(--default-spacing);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Chat__history {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  /* keep scrolling functional but hide native scrollbars */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Chrome, Safari, Opera */
+.Chat__history::-webkit-scrollbar {
+  display: none;
 }
 
 .Chat__input {
@@ -58,4 +73,10 @@
 
 .Layer__item:hover {
   background-color: rgba(124, 92, 255, 0.1);
+}
+
+.User__Message {
+  display: flex;
+
+  justify-content: end;
 }

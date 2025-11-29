@@ -49,6 +49,7 @@
 }
 
 .MobileChat {
+  max-height: calc(100vh - var(--header-height) - 32px);
   width: calc(100% - 16px - 16px);
   position: absolute;
 

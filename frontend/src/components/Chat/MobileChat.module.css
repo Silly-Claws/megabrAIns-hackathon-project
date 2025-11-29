@@ -1,0 +1,77 @@
+.Chat {
+  background-color: var(--main-bg-color);
+  opacity: 80%;
+  border-radius: var(--default-border-r);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Chat__input {
+  margin: 8px;
+  border-radius: var(--default-border-r);
+  outline: none;
+  border: none;
+  flex-grow: 1;
+  padding: var(--default-spacing);
+}
+
+.Button {
+  height: 40px;
+  width: 80px;
+  border-radius: var(--default-border-r);
+
+  outline: none;
+  border: none;
+}
+
+.Chat__wrapper {
+  display: flex;
+  gap: var(--default-spacing);
+  padding: var(--default-spacing);
+  align-items: center;
+}
+
+.Layer__list {
+  display: flex;
+  flex-direction: column;
+  padding: var(--default-spacing);
+  overflow: hidden;
+}
+
+.Layer__item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.Layer__item:hover {
+  background-color: rgba(124, 92, 255, 0.1);
+}
+
+.Button:hover {
+  scale: 1.05;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.Chat__history {
+  display: flex;
+  flex-direction: column;
+  padding: var(--default-spacing);
+
+  overflow: scroll;
+}
+
+.User__Message {
+  display: flex;
+
+  justify-content: end;
+}
+
+.Minimize__icon__wrapper {
+  display: flex;
+  padding: calc(var(--default-spacing) * 2) var(--default-spacing);
+  justify-content: end;
+}

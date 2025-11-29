@@ -2,11 +2,16 @@ package sk.sillyclaws.megabrainshackathonproject.webserver;
 
 import dev.langchain4j.data.message.AiMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sk.sillyclaws.megabrainshackathonproject.services.ChatBot;
 import sk.sillyclaws.megabrainshackathonproject.services.LayersService;
 import sk.sillyclaws.megabrainshackathonproject.webserver.models.Layer;
 import sk.sillyclaws.megabrainshackathonproject.webserver.models.MapRequest;
+import sk.sillyclaws.megabrainshackathonproject.webserver.requests.PromptRequest;
+import sk.sillyclaws.megabrainshackathonproject.webserver.requests.Response;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +22,9 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:5173")
 @RequiredArgsConstructor
 public class RestController {
+
+    @Autowired
+    private ChatBot chatBot;
 
     private final LayersService layersService;
 
@@ -58,5 +66,11 @@ public class RestController {
     @GetMapping("/ping")
     public String ping() {
         return "Backend is working!";
+    }
+
+
+    @PostMapping("/prompt")
+    public Response userPrompt(@RequestBody PromptRequest prompt) {
+        return Response.aiMessageToResponse(chatBot.processRequest(prompt.getPrompt()));
     }
 }

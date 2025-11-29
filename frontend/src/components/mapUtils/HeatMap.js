@@ -1,26 +1,60 @@
 import L from "leaflet";
 import "leaflet.heat";
+import {DEFAULT_MAP_ZOOM, POINTS_BLUR, POINTS_RADIUS} from "../../constants.js";
 
-export function setHeatMap({ map, heatLayer, points, gradient }) {
-  if (heatLayer) {
-    map.removeLayer(heatLayer);
-    heatLayer = null;
-  }
+const zoomToRadius = {
+  16: 1,
+  15: 0.5,
+  14: 0.25,
+  13: 0.125,
+  12: 0.0625,
+};
 
-  heatLayer = L.heatLayer(points, {
-    radius: 50,
-    blur: 25,
-    maxZoom: 17,
-    gradient
+export function setHeatMap({ map, points, gradient, baseRadius = POINTS_RADIUS}) {
+  if (!map || !points || points.length === 0) return null;
+
+  const heatLayer = L.heatLayer(points, {
+    radius: getRadius(),
+    blur: POINTS_BLUR,
+    gradient,
+    minOpacity: 0.7,
   }).addTo(map);
 
-  return heatLayer;
+  function getRadius() {
+    const zoom = map.getZoom();
+
+    console.log("New zoom: " + zoom);
+
+    const newBaseRadius = baseRadius * zoomToRadius[zoom];
+
+    console.log("New baseRadius: " + newBaseRadius);
+
+    return newBaseRadius;
+  }
+
+  function onZoom() {
+    const radius = getRadius();
+    heatLayer.setOptions({
+      radius: radius,
+      blur: radius / 2,
+      gradient,
+      minOpacity: 0.7
+    });
+    heatLayer.redraw();
+  }
+
+  map.on("zoomend", onZoom);
+
+  return {
+    layer: heatLayer,
+    destroy() {
+      map.off("zoomend", onZoom);
+      if (heatLayer) map.removeLayer(heatLayer);
+    }
+  };
 }
 
 export function deleteHeatMap(map, heatLayer) {
-  if (heatLayer) {
-    map.removeLayer(heatLayer);
-    heatLayer = null;
-  }
-  return null;
+  if (!map || !heatLayer) return;
+  map.removeLayer(heatLayer);
 }

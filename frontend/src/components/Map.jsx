@@ -5,6 +5,7 @@ import "leaflet.heat";
 
 import styles from "./Map.module.css";
 import {useLayerContext} from "../contexts/LayerContext.jsx";
+import {DEFAULT_MAP_ZOOM} from "../constants.js";
 
 function Map({ className }) {
   const mapRef = useRef(null);
@@ -12,7 +13,12 @@ function Map({ className }) {
   const { setMapRef } = useLayerContext();
 
   useEffect(() => {
-    mapRef.current = L.map("map").setView([48.721182, 21.257564], 13);
+    mapRef.current = L.map("map", {
+      center: [48.721182, 21.257564],
+      zoom: DEFAULT_MAP_ZOOM,
+      minZoom: 12,
+      maxZoom: 16,
+    }).setView([48.721182, 21.257564], 13);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:

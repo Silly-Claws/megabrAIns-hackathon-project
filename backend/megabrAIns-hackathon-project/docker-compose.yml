@@ -8,7 +8,8 @@ services:
     environment:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: byty_domy_pocet_obyvatelov
+      POSTGRES_DB: datadb
+#      what do you mean datadb? dataDATAbase?
     ports:
       - "15433:5432"
     volumes:

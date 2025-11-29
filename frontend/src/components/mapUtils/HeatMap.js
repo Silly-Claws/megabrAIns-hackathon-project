@@ -40,7 +40,7 @@ export function setHeatMap({ map, points, gradient, baseRadius = POINTS_RADIUS})
       radius: radius,
       blur: radius / 2,
       gradient,
-      minOpacity: 0
+      minOpacity: 0,
     });
     heatLayer.redraw();
   }

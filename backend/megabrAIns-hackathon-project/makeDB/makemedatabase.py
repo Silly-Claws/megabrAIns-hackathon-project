@@ -1,4 +1,4 @@
-#  Pocet obyvateľov
+#  Pocet obyvateľov (only 2000)
 
 # import json
 #
@@ -181,3 +181,44 @@
 
 # Culture
 
+
+
+
+# remake Pocet obyvateľov (all from db)
+
+
+
+import geopandas as gpd
+
+gdf = gpd.read_file("data.gpkg")
+
+gdf = gdf.to_crs("EPSG:4326")
+# print(gdf.columns)
+
+with open("init.sql", "a", encoding="utf-8") as sql_file:
+    sql_file.write("""
+CREATE TABLE IF NOT EXISTS population_points (
+    id SERIAL PRIMARY KEY,
+    x DOUBLE PRECISION,
+    y DOUBLE PRECISION,
+    pocet_obyvatelov REAL
+);
+""")
+
+    for i, row in gdf.iterrows():
+        if row.geometry is None:
+            continue
+
+        lon = row.geometry.x
+        lat = row.geometry.y
+
+        pocet = row.get("Počet_obyvateľov")
+        if pocet is None:
+            continue
+
+        sql_file.write(
+            f"INSERT INTO population_points (x, y, pocet_obyvatelov) "
+            f"VALUES ({lon}, {lat}, {pocet});\n"
+        )
+
+print("DONE: init.sql generated with correct WGS84 coordinates.")

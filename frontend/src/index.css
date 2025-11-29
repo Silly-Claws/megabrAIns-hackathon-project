@@ -7,13 +7,15 @@
 
   --header-color: #ffffff;
 
-  --header-height: 48px;
+  --header-height: 60px;
 
   --default-border-r: 12px;
   --large-border-r: 24px;
   --default-spacing: 8px;
   --spacing-md: 12px;
   --spacing-lg: 24px;
+
+  --light-green-color: #4dcf9b;
 }
 
 #root {

@@ -3,8 +3,9 @@
     var(--default-border-r, 12px) 0;
   background: var(--orange-main-color, rgba(237, 151, 69, 0.5));
   box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
+
   padding: var(--spacing-md) var(--spacing-lg);
+  width: 350px;
 }
 
 .Chat__message__right {
@@ -12,6 +13,7 @@
     var(--default-border-r, 12px);
   background: var(--green-main-color);
   box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
+
   padding: var(--spacing-md) var(--spacing-lg);
+  width: 350px;
 }

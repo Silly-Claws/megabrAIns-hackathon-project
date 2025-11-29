@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: mydb
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: byty_domy_pocet_obyvatelov
+    ports:
+      - "15433:5432"
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d
+

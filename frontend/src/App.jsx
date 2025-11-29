@@ -25,16 +25,16 @@ function App() {
       <Header className={styles.Header} />
       <Map className={styles.Map} />
       <LayerPicker className={styles.LayerPicker} />
-      {windowWidth > 478 ? (
-        <Chat
-          className={styles.Chat}
-          inputValue={value}
-          handleChange={handleChange}
-          handleSendQuery={handleSendQuery}
-        />
-      ) : (
-        <MobileChat className={styles.MobileChat} />
-      )}
+      {/*{windowWidth > 478 ? (*/}
+      {/*  <Chat*/}
+      {/*    className={styles.Chat}*/}
+      {/*    inputValue={value}*/}
+      {/*    handleChange={handleChange}*/}
+      {/*    handleSendQuery={handleSendQuery}*/}
+      {/*  />*/}
+      {/*) : (*/}
+      {/*  <MobileChat className={styles.MobileChat} />*/}
+      {/*)}*/}
     </div>
   );
 }

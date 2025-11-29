@@ -36,9 +36,9 @@ export function LayerContextProvider({ children }) {
         [48.719, 21.25, 0.6],
       ],
       gradient: {
-        0.0: "rgba(0,0,0,0)",
-        0.5: "rgba(255,0,0,0.5)",
-        1.0: "rgba(255,100,100,1)"
+        0.0: "rgba(255,0,0,0.5)",
+        0.5: "rgba(255,0,0,0.8)",
+        1.0: "rgb(255,0,0)"
       }
     },
     transportation: {
@@ -93,25 +93,31 @@ export function LayerContextProvider({ children }) {
 
   function enableHeatmap(id) {
     if (!id || !mapRef.current) return;
-    if (activeHeatIdsRef.current.includes(id)) return; // уже включён
+    if (activeHeatIdsRef.current.includes(id)) return;
 
-    const layer = setHeatMap({
+    const heat = setHeatMap({
       map: mapRef.current,
-      heatLayer: null,
       points: heatmaps[id].points,
-      gradient: heatmaps[id].gradient
+      gradient: heatmaps[id].gradient,
+      radius: 50
     });
 
-    heatLayersRef.current[id] = layer;
+    heatLayersRef.current[id] = heat;
     activeHeatIdsRef.current.push(id);
   }
 
   function disableHeatmap(id) {
     if (!id || !mapRef.current || !heatLayersRef.current[id]) return;
 
-    deleteHeatMap(mapRef.current, heatLayersRef.current[id]);
+    const layer = heatLayersRef.current[id];
+    if (!layer) return;
+
+    deleteHeatMap(mapRef.current, layer);
+    layer.destroy?.();
     delete heatLayersRef.current[id];
-    activeHeatIdsRef.current = activeHeatIdsRef.current.filter(x => x !== id);
+
+    activeHeatIdsRef.current =
+      activeHeatIdsRef.current.filter(x => x !== id);
   }
 
   function disableAllHeatmaps() {

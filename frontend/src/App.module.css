@@ -13,11 +13,18 @@
   top: 0;
   right: 0;
   left: 0;
+
+  z-index: 1000;
 }
 
 .Map {
   width: 100%;
-  max-height: calc(100vh - var(--header-height));
+  /*max-height: calc(100vh - var(--header-height));*/
+
+  position: absolute;
+
+
+  z-index: 100;
 }
 
 .LayerPicker {
@@ -26,7 +33,7 @@
   height: calc(100vh - var(--header-height));
 
   top: var(--header-height);
-  right: 0;
+  left: 0;
 
   max-height: calc(100vh - var(--header-height));
 }

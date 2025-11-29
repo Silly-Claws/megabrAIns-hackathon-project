@@ -13,11 +13,13 @@ const zoomToRadius = {
 export function setHeatMap({ map, points, gradient, baseRadius = POINTS_RADIUS}) {
   if (!map || !points || points.length === 0) return null;
 
+  const radius = getRadius();
+
   const heatLayer = L.heatLayer(points, {
-    radius: getRadius(),
-    blur: POINTS_BLUR,
+    radius: radius,
+    blur: radius / 2,
     gradient,
-    minOpacity: 0.7,
+    minOpacity: 0,
   }).addTo(map);
 
   function getRadius() {
@@ -38,7 +40,7 @@ export function setHeatMap({ map, points, gradient, baseRadius = POINTS_RADIUS})
       radius: radius,
       blur: radius / 2,
       gradient,
-      minOpacity: 0.7
+      minOpacity: 0
     });
     heatLayer.redraw();
   }

@@ -43,7 +43,9 @@ public class LayersService {
         List<WeightedPoint> result = new ArrayList<>();
         double halfMeters = CoordinatesConfig.DISTANCE / 2.0;
 
-        for (Point gp : gridGeneratorService.generateGrid()) {
+        var grid = gridGeneratorService.generateGrid();
+
+        for (Point gp : grid) {
 
 //            System.out.println(gp);
 
@@ -55,8 +57,8 @@ public class LayersService {
             double halfLat = halfMeters / metersPerDegLat;
             double halfLon = halfMeters / metersPerDegLon;
 
-            System.out.println((gp.lat() - halfLat) + " " + (gp.lat() + halfLat));
-            System.out.println((gp.lon() - halfLon) + " " + (gp.lon() + halfLon));
+//            System.out.println((gp.lat() - halfLat) + " " + (gp.lat() + halfLat));
+//            System.out.println((gp.lon() - halfLon) + " " + (gp.lon() + halfLon));
 
             float people = populationRepository.getPopulationInArea(
                     gp.lat() - halfLat, gp.lat() + halfLat,

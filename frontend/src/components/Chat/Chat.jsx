@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./Chat.module.css";
 import { AnimatePresence, motion } from "framer-motion";
+import stylesGlass from "../Glass.module.css";
 
 function Chat({ className, handleChange, inputValue }) {
   const [showLayers, setShowLayers] = useState(false);
@@ -8,7 +9,9 @@ function Chat({ className, handleChange, inputValue }) {
 
   return (
     <motion.div
-      className={styles.Chat + " " + (className || "")}
+      className={
+        styles.Chat + " " + (className || "") + " " + stylesGlass.Glass
+      }
       initial={{ width: 0, opacity: 0 }}
       animate={{ width: isExpanded ? "auto" : 60, opacity: 0.8 }}
       exit={{ width: 0, opacity: 0 }}

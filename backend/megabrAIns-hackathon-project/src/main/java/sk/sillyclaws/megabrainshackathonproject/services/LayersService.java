@@ -8,6 +8,7 @@ import sk.sillyclaws.megabrainshackathonproject.models.WeightedPoint;
 import sk.sillyclaws.megabrainshackathonproject.repository.PopulationRepository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -15,6 +16,7 @@ import java.util.List;
 public class LayersService {
 
     private final PopulationRepository populationRepository;
+
     private final GridGeneratorService gridGeneratorService;
 
     private List<WeightedPoint> normalizePoints(List<WeightedPoint> points) {
@@ -45,7 +47,6 @@ public class LayersService {
         double latMin = grid.stream().mapToDouble(Point::lat).min().orElseThrow();
         double latMax = grid.stream().mapToDouble(Point::lat).max().orElseThrow();
         double lonMin = grid.stream().mapToDouble(Point::lon).min().orElseThrow();
-        double lonMax = grid.stream().mapToDouble(Point::lon).max().orElseThrow();
 
         double metersPerDegLat = 111_320.0;
         double metersPerDegLon = 111_320.0 * Math.cos(Math.toRadians((latMin + latMax) / 2));
@@ -55,16 +56,20 @@ public class LayersService {
 
         var aggregated = populationRepository.getPopulationGrid(latMin, latStep, lonMin, lonStep);
 
-        List<WeightedPoint> result = new ArrayList<>();
+        var populationMap = new HashMap<String, Float>();
         for (Object[] row : aggregated) {
             int gLat = ((Number) row[0]).intValue();
             int gLon = ((Number) row[1]).intValue();
             float people = ((Number) row[2]).floatValue();
+            populationMap.put(gLat + ":" + gLon, people);
+        }
 
-            double lat = latMin + gLat * latStep;
-            double lon = lonMin + gLon * lonStep;
-
-            result.add(new WeightedPoint(new Point(lat, lon), people));
+        List<WeightedPoint> result = new ArrayList<>();
+        for (Point p : grid) {
+            int gl = (int) Math.floor((p.lat() - latMin) / latStep);
+            int gn = (int) Math.floor((p.lon() - lonMin) / lonStep);
+            float value = populationMap.getOrDefault(gl + ":" + gn, 0f);
+            result.add(new WeightedPoint(p, value));
         }
 
         return normalizePoints(result);

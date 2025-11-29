@@ -8,6 +8,8 @@
 
   --default-border-r: 12px;
   --default-spacing: 8px;
+
+  --light-green-color: #4DCF9B;
 }
 
 #root {

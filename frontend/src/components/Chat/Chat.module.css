@@ -1,17 +1,45 @@
 .Chat {
-  opacity: 80%;
-  border-radius: var(--default-border-r);
+  /*min-width: 350px;*/
+
+  border-radius: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .Menu__arrowIcon__wrapper {
-  padding: var(--default-spacing);
+  width: auto;
+  height: fit-content;
+
+  padding: 12px;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
 }
+
+.Toggle__button {
+  height: 36px;
+  width: 36px;
+  border-radius: var(--default-border-r);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  outline: none;
+  border: none;
+}
+
+.Toggle__button:hover {
+  scale: 1.05;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+
 .Chat__history {
   display: flex;
   flex-direction: column;
@@ -27,28 +55,42 @@
 }
 
 .Chat__input {
-  margin: 8px;
   border-radius: var(--default-border-r);
   outline: none;
   border: none;
   flex-grow: 1;
   padding: var(--default-spacing);
+
+  resize: none;
 }
 
 .Chat__wrapper {
+  height: 48px;
+
   display: flex;
-  gap: var(--default-spacing);
-  padding: var(--default-spacing);
+  gap: 8px;
+  padding: 12px;
   align-items: center;
 }
 
 .Button {
-  height: 40px;
-  width: 80px;
+  height: 48px;
+  width: 48px;
   border-radius: var(--default-border-r);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
 
   outline: none;
   border: none;
+}
+
+.Button__icon {
+  height: 24px;
+  width: 24px;
 }
 
 .Button:hover {

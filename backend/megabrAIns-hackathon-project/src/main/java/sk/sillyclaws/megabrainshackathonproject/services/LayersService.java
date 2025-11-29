@@ -40,38 +40,34 @@ public class LayersService {
 
     public List<WeightedPoint> getPopulationLayerGridded() {
 
-        List<WeightedPoint> result = new ArrayList<>();
-        double halfMeters = CoordinatesConfig.DISTANCE / 2.0;
-
         var grid = gridGeneratorService.generateGrid();
 
-        for (Point gp : grid) {
+        double latMin = grid.stream().mapToDouble(Point::lat).min().orElseThrow();
+        double latMax = grid.stream().mapToDouble(Point::lat).max().orElseThrow();
+        double lonMin = grid.stream().mapToDouble(Point::lon).min().orElseThrow();
+        double lonMax = grid.stream().mapToDouble(Point::lon).max().orElseThrow();
 
-//            System.out.println(gp);
+        double metersPerDegLat = 111_320.0;
+        double metersPerDegLon = 111_320.0 * Math.cos(Math.toRadians((latMin + latMax) / 2));
 
-            // convert search radius from meters → degrees
-            double metersPerDegLat = 111_320.0;
-            double metersPerDegLon =
-                    111_320.0 * Math.cos(Math.toRadians(gp.lat()));
+        double latStep = CoordinatesConfig.DISTANCE / metersPerDegLat;
+        double lonStep = CoordinatesConfig.DISTANCE / metersPerDegLon;
 
-            double halfLat = halfMeters / metersPerDegLat;
-            double halfLon = halfMeters / metersPerDegLon;
+        var aggregated = populationRepository.getPopulationGrid(latMin, latStep, lonMin, lonStep);
 
-//            System.out.println((gp.lat() - halfLat) + " " + (gp.lat() + halfLat));
-//            System.out.println((gp.lon() - halfLon) + " " + (gp.lon() + halfLon));
+        List<WeightedPoint> result = new ArrayList<>();
+        for (Object[] row : aggregated) {
+            int gLat = ((Number) row[0]).intValue();
+            int gLon = ((Number) row[1]).intValue();
+            float people = ((Number) row[2]).floatValue();
 
-            float people = populationRepository.getPopulationInArea(
-                    gp.lat() - halfLat, gp.lat() + halfLat,
-                    gp.lon() - halfLon, gp.lon() + halfLon
-            );
+            double lat = latMin + gLat * latStep;
+            double lon = lonMin + gLon * lonStep;
 
-//            System.out.println(people);
-
-            if (people > 0) {
-                result.add(new WeightedPoint(gp, people));
-            }
+            result.add(new WeightedPoint(new Point(lat, lon), people));
         }
 
         return normalizePoints(result);
     }
+
 }

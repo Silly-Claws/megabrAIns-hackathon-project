@@ -25,7 +25,7 @@ public class PopulationRepository {
                 .toList();
     }
 
-    public float getPopulationInArea(double latMin, double latMax, double lonMin, double lonMax) {
-        return housePopulationJpa.getPopulationInArea(latMin, latMax, lonMin, lonMax);
+    public List<Object[]> getPopulationGrid(double latMin, double latMax, double lonMin, double lonMax) {
+        return housePopulationJpa.getPopulationGrid(latMin, latMax, lonMin, lonMax);
     }
 }

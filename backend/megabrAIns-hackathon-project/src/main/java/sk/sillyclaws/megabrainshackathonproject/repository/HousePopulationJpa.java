@@ -5,18 +5,23 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import sk.sillyclaws.megabrainshackathonproject.models.HousePopulationEntity;
 
+import java.util.List;
+
 public interface HousePopulationJpa extends JpaRepository<HousePopulationEntity, Long> {
 
     @Query(value = """
-        SELECT COALESCE(SUM(pocet_obyvatelov), 0)
-        FROM population_points
-        WHERE x BETWEEN :lonMin AND :lonMax
-          AND y BETWEEN :latMin AND :latMax
-    """, nativeQuery = true)
-    Float getPopulationInArea(
+    SELECT 
+        FLOOR((y - :latMin) / :latStep) AS gridLat,
+        FLOOR((x - :lonMin) / :lonStep) AS gridLon,
+        SUM(pocet_obyvatelov) AS total
+    FROM population_points
+    GROUP BY gridLat, gridLon
+""", nativeQuery = true)
+    List<Object[]> getPopulationGrid(
             @Param("latMin") double latMin,
-            @Param("latMax") double latMax,
+            @Param("latStep") double latStep,
             @Param("lonMin") double lonMin,
-            @Param("lonMax") double lonMax
+            @Param("lonStep") double lonStep
     );
+
 }

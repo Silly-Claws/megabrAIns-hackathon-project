@@ -10,4 +10,6 @@ public class CoordinatesConfig {
     public static final Point BOTTOM_RIGHT = new Point(48.678284, 21.316946);
 
     public static final double DISTANCE = 100;
+
+    public static final double WALKING_DISTANCE = 400;
 }

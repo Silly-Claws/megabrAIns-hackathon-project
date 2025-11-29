@@ -7,7 +7,7 @@ import sk.sillyclaws.megabrainshackathonproject.models.HousePopulationEntity;
 
 import java.util.List;
 
-public interface HousePopulationJpa extends JpaRepository<HousePopulationEntity, Long> {
+public interface PopulationJpa extends JpaRepository<HousePopulationEntity, Long> {
 
     @Query(value = """
     SELECT 

@@ -1,13 +1,19 @@
 * {
   --text-color: black;
 
-  --main-bg-color: #d7d7d7;
+  --main-bg-color: #19202866;
+  --green-main-color: #4dcf9b80;
+  --orange-main-color: #ed974580;
+
   --header-color: #ffffff;
 
   --header-height: 48px;
 
   --default-border-r: 12px;
+  --large-border-r: 24px;
   --default-spacing: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 24px;
 }
 
 #root {

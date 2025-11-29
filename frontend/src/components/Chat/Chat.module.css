@@ -1,5 +1,4 @@
 .Chat {
-  opacity: 80%;
   border-radius: var(--default-border-r);
   display: flex;
   flex-direction: column;
@@ -19,6 +18,7 @@
   /* keep scrolling functional but hide native scrollbars */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  gap: 12px;
 }
 
 /* Chrome, Safari, Opera */
@@ -79,4 +79,10 @@
   display: flex;
 
   justify-content: end;
+}
+
+.GPT__Message {
+  display: flex;
+
+  justify-content: start;
 }

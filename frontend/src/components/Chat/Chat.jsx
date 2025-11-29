@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./Chat.module.css";
 import { AnimatePresence, motion } from "framer-motion";
 import stylesGlass from "../Glass.module.css";
+import ChatMessage from "../ChatMessage";
 
 function Chat({ className, handleChange, inputValue }) {
   const [showLayers, setShowLayers] = useState(false);
@@ -41,9 +42,17 @@ function Chat({ className, handleChange, inputValue }) {
             {Array.from({ length: 30 }).map((item, index) => (
               <div
                 key={index}
-                className={index % 2 === 0 ? styles.User__Message : ""}
+                className={
+                  index % 2 === 0 ? styles.User__Message : styles.GPT__Message
+                }
               >
-                <span>{index % 2 === 0 ? "User message" : "Chat message"}</span>
+                <span>
+                  {index % 2 === 0 ? (
+                    <ChatMessage text={"User message"} author="user" />
+                  ) : (
+                    <ChatMessage text={"Chat message"} author="gpt" />
+                  )}
+                </span>
               </div>
             ))}
           </motion.div>

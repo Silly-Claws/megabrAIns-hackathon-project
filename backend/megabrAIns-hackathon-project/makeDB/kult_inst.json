@@ -1,0 +1,1551 @@
+{
+  "objectIdFieldName": "ObjectId",
+  "uniqueIdField": {
+    "name": "ObjectId",
+    "isSystemMaintained": true
+  },
+  "globalIdFieldName": "",
+  "geometryType": "esriGeometryPoint",
+  "spatialReference": {
+    "wkid": 4326,
+    "latestWkid": 4326
+  },
+  "fields": [
+    {
+      "name": "y",
+      "type": "esriFieldTypeString",
+      "alias": "y",
+      "sqlType": "sqlTypeNVarchar",
+      "length": 4000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "x",
+      "type": "esriFieldTypeString",
+      "alias": "x",
+      "sqlType": "sqlTypeNVarchar",
+      "length": 4000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "typ_institucie",
+      "type": "esriFieldTypeString",
+      "alias": "typ_institucie",
+      "sqlType": "sqlTypeNVarchar",
+      "length": 4000,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "y": "48.7271158",
+        "x": "21.2387749",
+        "typ_institucie": "kino/amfiteáter"
+      },
+      "geometry": {
+        "x": 21.2387749,
+        "y": 48.7271158
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72614292",
+        "x": "21.25743233",
+        "typ_institucie": "kino/amfiteáter"
+      },
+      "geometry": {
+        "x": 21.25743233,
+        "y": 48.72614292
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.695907",
+        "x": "21.23900382",
+        "typ_institucie": "kino/amfiteáter"
+      },
+      "geometry": {
+        "x": 21.23900382,
+        "y": 48.695907
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71525609",
+        "x": "21.23846527",
+        "typ_institucie": "kino/amfiteáter"
+      },
+      "geometry": {
+        "x": 21.2383542312831,
+        "y": 48.7152835209489
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71896112",
+        "x": "21.2539918",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.2539918,
+        "y": 48.71896112
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7537973",
+        "x": "21.2719093",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.2719093,
+        "y": 48.7537973
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7138273",
+        "x": "21.2236769",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.2236769,
+        "y": 48.7138273
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72083137",
+        "x": "21.26068832",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.26068832,
+        "y": 48.72083137
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7102735",
+        "x": "21.2141213",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.2141213,
+        "y": 48.7102735
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71831791",
+        "x": "21.25662316",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.25662316,
+        "y": 48.71831791
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7143438",
+        "x": "21.2660971",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.2660971,
+        "y": 48.7143438
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.687773",
+        "x": "21.194957",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.194957,
+        "y": 48.687773
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72249582",
+        "x": "21.26123738",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.26123738,
+        "y": 48.72249582
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72174739",
+        "x": "21.25678534",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.25678534,
+        "y": 48.72174739
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72671425",
+        "x": "21.25600336",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.25600336,
+        "y": 48.72671425
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72335956",
+        "x": "21.25621753",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.25621753,
+        "y": 48.72335956
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72825558",
+        "x": "21.25504925",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.25504925,
+        "y": 48.72825558
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72169116",
+        "x": "21.25792742",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.25792742,
+        "y": 48.72169116
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71703174",
+        "x": "21.25383668",
+        "typ_institucie": "divadlo"
+      },
+      "geometry": {
+        "x": 21.25383668,
+        "y": 48.71703174
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71961676",
+        "x": "21.2552564",
+        "typ_institucie": "galéria"
+      },
+      "geometry": {
+        "x": 21.2552564,
+        "y": 48.71961676
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72067339",
+        "x": "21.2572794",
+        "typ_institucie": "galéria"
+      },
+      "geometry": {
+        "x": 21.2572794,
+        "y": 48.72067339
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71988279",
+        "x": "21.25896808",
+        "typ_institucie": "galéria"
+      },
+      "geometry": {
+        "x": 21.25896808,
+        "y": 48.71988279
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71959762",
+        "x": "21.25799512",
+        "typ_institucie": "galéria"
+      },
+      "geometry": {
+        "x": 21.25799512,
+        "y": 48.71959762
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7339819",
+        "x": "21.248316",
+        "typ_institucie": "galéria"
+      },
+      "geometry": {
+        "x": 21.248316,
+        "y": 48.7339819
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72338072",
+        "x": "21.25865526",
+        "typ_institucie": "galéria"
+      },
+      "geometry": {
+        "x": 21.25865526,
+        "y": 48.72338072
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72780462",
+        "x": "21.25816305",
+        "typ_institucie": "galéria"
+      },
+      "geometry": {
+        "x": 21.25816305,
+        "y": 48.72780462
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7216942",
+        "x": "21.2554056",
+        "typ_institucie": "galéria"
+      },
+      "geometry": {
+        "x": 21.2554056,
+        "y": 48.7216942
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7318187",
+        "x": "21.2457073",
+        "typ_institucie": "galéria"
+      },
+      "geometry": {
+        "x": 21.2457073,
+        "y": 48.7318187
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.6992616",
+        "x": "21.2494486",
+        "typ_institucie": "galéria"
+      },
+      "geometry": {
+        "x": 21.2494486,
+        "y": 48.6992616
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72494998",
+        "x": "21.26091488",
+        "typ_institucie": "galéria"
+      },
+      "geometry": {
+        "x": 21.26091488,
+        "y": 48.72494998
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.705445",
+        "x": "21.2282873",
+        "typ_institucie": "planetárium"
+      },
+      "geometry": {
+        "x": 21.2282873,
+        "y": 48.705445
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72412685",
+        "x": "21.25589138",
+        "typ_institucie": "planetárium"
+      },
+      "geometry": {
+        "x": 21.25589138,
+        "y": 48.72412685
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71965156",
+        "x": "21.25544654",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.25544654,
+        "y": 48.71965156
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7229351",
+        "x": "21.25197546",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.25197546,
+        "y": 48.7229351
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.718863",
+        "x": "21.25853514",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.25853514,
+        "y": 48.718863
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.668356",
+        "x": "21.235385",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.235385,
+        "y": 48.668356
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72728805",
+        "x": "21.25344288",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.25344288,
+        "y": 48.72728805
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.702137",
+        "x": "\t21.247289",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.247289,
+        "y": 48.702137
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72279364",
+        "x": "21.25970511",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.25970511,
+        "y": 48.72279364
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72339032",
+        "x": "21.25958498",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.25958498,
+        "y": 48.72339032
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72262277",
+        "x": "21.26006391",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.26006391,
+        "y": 48.72262277
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72262277",
+        "x": "21.26006391",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.26006391,
+        "y": 48.72262277
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72307112",
+        "x": "21.25468744",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.25468744,
+        "y": 48.72307112
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72728805",
+        "x": "21.25344288",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.25344288,
+        "y": 48.72728805
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.727418",
+        "x": "21.255034",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.255034,
+        "y": 48.727418
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71554186",
+        "x": "21.21663394",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.21663394,
+        "y": 48.71554186
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72412685",
+        "x": "21.25589138",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.25589138,
+        "y": 48.72412685
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.717875",
+        "x": "21.253197",
+        "typ_institucie": "kultúrne stredisko"
+      },
+      "geometry": {
+        "x": 21.253197,
+        "y": 48.717875
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.713415",
+        "x": "21.256599",
+        "typ_institucie": "kultúrne stredisko"
+      },
+      "geometry": {
+        "x": 21.256599,
+        "y": 48.713415
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72312342",
+        "x": "21.25970693",
+        "typ_institucie": "kultúrne stredisko"
+      },
+      "geometry": {
+        "x": 21.25970693,
+        "y": 48.72312342
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.6876586",
+        "x": "21.2883464",
+        "typ_institucie": "združenie"
+      },
+      "geometry": {
+        "x": 21.2883464,
+        "y": 48.6876586
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.713946",
+        "x": "21.255365",
+        "typ_institucie": "kultúrne stredisko"
+      },
+      "geometry": {
+        "x": 21.255365,
+        "y": 48.713946
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7291562",
+        "x": "21.255943",
+        "typ_institucie": "kultúrne stredisko"
+      },
+      "geometry": {
+        "x": 21.255943,
+        "y": 48.7291562
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.720749",
+        "x": "21.25458573",
+        "typ_institucie": "kultúrne stredisko"
+      },
+      "geometry": {
+        "x": 21.25458573,
+        "y": 48.720749
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72494998",
+        "x": "21.26091488",
+        "typ_institucie": "kultúrne stredisko"
+      },
+      "geometry": {
+        "x": 21.26091488,
+        "y": 48.72494998
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.713415",
+        "x": "21.256599",
+        "typ_institucie": "kultúrne stredisko"
+      },
+      "geometry": {
+        "x": 21.256599,
+        "y": 48.713415
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71845754",
+        "x": "21.25878609",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.25878609,
+        "y": 48.71845754
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72117024",
+        "x": "21.25701931",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.25701931,
+        "y": 48.72117024
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.713379",
+        "x": "21.255504",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.255504,
+        "y": 48.713379
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72104331",
+        "x": "21.25170501",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.25170501,
+        "y": 48.72104331
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7314287",
+        "x": "21.2437716",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2437716,
+        "y": 48.7314287
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72104331",
+        "x": "21.25170501",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.25170501,
+        "y": 48.72104331
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72697472",
+        "x": "21.25252685",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.25252685,
+        "y": 48.72697472
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71661016",
+        "x": "21.21052318",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.21052318,
+        "y": 48.71661016
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.6784202",
+        "x": "21.26463604",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.26463604,
+        "y": 48.6784202
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71464559",
+        "x": "21.23394359",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.23394359,
+        "y": 48.71464559
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.6844706",
+        "x": "21.2904875",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2904875,
+        "y": 48.6844706
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.733965",
+        "x": "21.284588",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.284588,
+        "y": 48.733965
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.6341745",
+        "x": "21.17150709",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.17150709,
+        "y": 48.6341745
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71988279",
+        "x": "21.25896808",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.25896808,
+        "y": 48.71988279
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7160544",
+        "x": "21.2371682",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2371682,
+        "y": 48.7160544
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7081375",
+        "x": "21.2351939",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2351939,
+        "y": 48.7081375
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7092907",
+        "x": "21.2412183",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2412183,
+        "y": 48.7092907
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71767363",
+        "x": "21.2157584",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2157584,
+        "y": 48.71767363
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7206006",
+        "x": "21.21388477",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.21388477,
+        "y": 48.7206006
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71500089",
+        "x": "21.20851148",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.20851148,
+        "y": 48.71500089
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71609089",
+        "x": "21.20893926",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.20893926,
+        "y": 48.71609089
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7579405",
+        "x": "21.2662035",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2662035,
+        "y": 48.7579405
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.75656203",
+        "x": "21.27058183",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.27058183,
+        "y": 48.75656203
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.73964076",
+        "x": "21.28644146",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.28644146,
+        "y": 48.73964076
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72789111",
+        "x": "21.28848349",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.28848349,
+        "y": 48.72789111
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7315797",
+        "x": "21.28522754",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.28522754,
+        "y": 48.7315797
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.74414986",
+        "x": "21.2819216",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2819216,
+        "y": 48.74414986
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.73936411",
+        "x": "21.25166502",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.25166502,
+        "y": 48.73936411
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7309606",
+        "x": "21.2430147",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2430147,
+        "y": 48.7309606
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71464463",
+        "x": "21.2563439",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2563439,
+        "y": 48.71464463
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.6876586",
+        "x": "21.2883464",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2883464,
+        "y": 48.6876586
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.6958046",
+        "x": "21.2822028",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2822028,
+        "y": 48.6958046
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.67908203",
+        "x": "21.30194235",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.30194235,
+        "y": 48.67908203
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72216358",
+        "x": "21.23741487",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.23741487,
+        "y": 48.72216358
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7192126",
+        "x": "21.2406287",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2406287,
+        "y": 48.7192126
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72937203",
+        "x": "21.24900736",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.24900736,
+        "y": 48.72937203
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72240248",
+        "x": "21.25901428",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.25901428,
+        "y": 48.72240248
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7176237",
+        "x": "21.2252942",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.2252942,
+        "y": 48.7176237
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72104331",
+        "x": "21.25170501",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.25170501,
+        "y": 48.72104331
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71753702",
+        "x": "21.25326498",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.25326498,
+        "y": 48.71753702
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.73772133",
+        "x": "21.24678169",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.24678169,
+        "y": 48.73772133
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.73772133",
+        "x": "21.24678169",
+        "typ_institucie": "knižnica"
+      },
+      "geometry": {
+        "x": 21.24678169,
+        "y": 48.73772133
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72074656",
+        "x": "21.25878909",
+        "typ_institucie": "organizácia"
+      },
+      "geometry": {
+        "x": 21.25878909,
+        "y": 48.72074656
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.735179",
+        "x": "21.2460726",
+        "typ_institucie": "folkórny súbor"
+      },
+      "geometry": {
+        "x": 21.2460726,
+        "y": 48.735179
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71841234",
+        "x": "21.21552934",
+        "typ_institucie": "folkórny súbor"
+      },
+      "geometry": {
+        "x": 21.21552934,
+        "y": 48.71841234
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71463059",
+        "x": "21.26127663",
+        "typ_institucie": "folkórny súbor"
+      },
+      "geometry": {
+        "x": 21.26127663,
+        "y": 48.71463059
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7014693",
+        "x": "21.282271",
+        "typ_institucie": "folkórny súbor"
+      },
+      "geometry": {
+        "x": 21.282271,
+        "y": 48.7014693
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7090437",
+        "x": "21.2318374",
+        "typ_institucie": "folkórny súbor"
+      },
+      "geometry": {
+        "x": 21.2318374,
+        "y": 48.7090437
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7593505",
+        "x": "21.2674007",
+        "typ_institucie": "folkórny súbor"
+      },
+      "geometry": {
+        "x": 21.2674007,
+        "y": 48.7593505
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7355655",
+        "x": "21.2719265",
+        "typ_institucie": "folkórny súbor"
+      },
+      "geometry": {
+        "x": 21.2719265,
+        "y": 48.7355655
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72867172",
+        "x": "21.25844997",
+        "typ_institucie": "folkórny súbor"
+      },
+      "geometry": {
+        "x": 21.25844997,
+        "y": 48.72867172
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7017005",
+        "x": "21.26231",
+        "typ_institucie": "folkórny súbor"
+      },
+      "geometry": {
+        "x": 21.26231,
+        "y": 48.7017005
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7017005",
+        "x": "21.26231",
+        "typ_institucie": "združenie"
+      },
+      "geometry": {
+        "x": 21.26231,
+        "y": 48.7017005
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.73888626",
+        "x": "21.2868892",
+        "typ_institucie": "spevácky zbor/skupina"
+      },
+      "geometry": {
+        "x": 21.2868892,
+        "y": 48.73888626
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72258755",
+        "x": "21.25643955",
+        "typ_institucie": "spevácky zbor/skupina"
+      },
+      "geometry": {
+        "x": 21.25643955,
+        "y": 48.72258755
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7304498",
+        "x": "21.2454985",
+        "typ_institucie": "spevácky zbor/skupina"
+      },
+      "geometry": {
+        "x": 21.2454985,
+        "y": 48.7304498
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.6231244",
+        "x": "21.3684751",
+        "typ_institucie": "múzeum"
+      },
+      "geometry": {
+        "x": 21.3684751,
+        "y": 48.6231244
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72307112",
+        "x": "21.25468744",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.25468744,
+        "y": 48.72307112
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72058407",
+        "x": "21.26085886",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.26085886,
+        "y": 48.72058407
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7228737",
+        "x": "21.25637573",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.25637573,
+        "y": 48.7228737
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7128086",
+        "x": "21.2506247",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.2506247,
+        "y": 48.7128086
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.715176",
+        "x": "21.2277524",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.2277524,
+        "y": 48.715176
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7147687",
+        "x": "21.2132999",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.2132999,
+        "y": 48.7147687
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.73578787",
+        "x": "21.28813968",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.28813968,
+        "y": 48.73578787
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7197526",
+        "x": "21.2559661",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.2559661,
+        "y": 48.7197526
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7235712",
+        "x": "21.2478799",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.2478799,
+        "y": 48.7235712
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7394676",
+        "x": "21.2422884",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.2422884,
+        "y": 48.7394676
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7270427",
+        "x": "21.2469097",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.2469097,
+        "y": 48.7270427
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71897001",
+        "x": "21.25995847",
+        "typ_institucie": "organizácia"
+      },
+      "geometry": {
+        "x": 21.25995847,
+        "y": 48.71897001
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72346684",
+        "x": "21.25832644",
+        "typ_institucie": "organizácia"
+      },
+      "geometry": {
+        "x": 21.25832644,
+        "y": 48.72346684
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72307112",
+        "x": "21.25468744",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.25468744,
+        "y": 48.72307112
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71887354",
+        "x": "21.25933257",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.25933257,
+        "y": 48.71887354
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71680171",
+        "x": "21.26767225",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.26767225,
+        "y": 48.71680171
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.71680171",
+        "x": "21.26767225",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.26767225,
+        "y": 48.71680171
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72216767",
+        "x": "21.26213139",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.26213139,
+        "y": 48.72216767
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72258755",
+        "x": "21.25643955",
+        "typ_institucie": "združenie/klub"
+      },
+      "geometry": {
+        "x": 21.25643955,
+        "y": 48.72258755
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72442991",
+        "x": "21.25628327",
+        "typ_institucie": "organizácia"
+      },
+      "geometry": {
+        "x": 21.25628327,
+        "y": 48.72442991
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.7216219",
+        "x": "21.2580789",
+        "typ_institucie": "informačné centrum"
+      },
+      "geometry": {
+        "x": 21.2580789,
+        "y": 48.7216219
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72032633",
+        "x": "21.2574668",
+        "typ_institucie": "informačné centrum"
+      },
+      "geometry": {
+        "x": 21.2574668,
+        "y": 48.72032633
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72117024",
+        "x": "21.25701931",
+        "typ_institucie": "informačné centrum"
+      },
+      "geometry": {
+        "x": 21.25701931,
+        "y": 48.72117024
+      }
+    },
+    {
+      "attributes": {
+        "y": "48.72570722",
+        "x": "21.25140161",
+        "typ_institucie": "informačné centrum"
+      },
+      "geometry": {
+        "x": 21.25140161,
+        "y": 48.72570722
+      }
+    }
+  ]
+}

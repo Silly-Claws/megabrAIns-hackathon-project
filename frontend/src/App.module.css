@@ -21,7 +21,6 @@
 
   position: absolute;
 
-
   z-index: 100;
 }
 
@@ -37,7 +36,6 @@
 }
 
 .Chat {
-  width: 400px;
   height: calc(100vh - var(--header-height) - 16px - 8px);
   position: absolute;
 

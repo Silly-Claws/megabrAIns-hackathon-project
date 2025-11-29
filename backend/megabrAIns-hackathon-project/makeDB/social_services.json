@@ -1,0 +1,1145 @@
+{
+  "objectIdFieldName": "ObjectId",
+  "uniqueIdField": {
+    "name": "ObjectId",
+    "isSystemMaintained": true
+  },
+  "globalIdFieldName": "",
+  "geometryType": "esriGeometryPoint",
+  "spatialReference": {
+    "wkid": 4326,
+    "latestWkid": 4326
+  },
+  "fields": [
+    {
+      "name": "cielova_skupina",
+      "type": "esriFieldTypeString",
+      "alias": "cielova_skupina",
+      "sqlType": "sqlTypeNVarchar",
+      "length": 4000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "druh_sluzby",
+      "type": "esriFieldTypeString",
+      "alias": "druh_sluzby",
+      "sqlType": "sqlTypeNVarchar",
+      "length": 4000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "y",
+      "type": "esriFieldTypeString",
+      "alias": "y",
+      "sqlType": "sqlTypeNVarchar",
+      "length": 4000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "x",
+      "type": "esriFieldTypeString",
+      "alias": "x",
+      "sqlType": "sqlTypeNVarchar",
+      "length": 4000,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "útulok",
+        "y": "48.744850593",
+        "x": "21.277247549"
+      },
+      "geometry": {
+        "x": 21.277247549,
+        "y": 48.744850593
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "komunitné centrum",
+        "y": "48.744850593",
+        "x": "21.277247549"
+      },
+      "geometry": {
+        "x": 21.277247549,
+        "y": 48.744850593
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "zariadenie pre seniorov",
+        "y": "48.729128801",
+        "x": "21.26073402"
+      },
+      "geometry": {
+        "x": 21.26073402,
+        "y": 48.729128801
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "zariadenie pre seniorov",
+        "y": "48.676015421",
+        "x": "21.267579296"
+      },
+      "geometry": {
+        "x": 21.267579296,
+        "y": 48.676015421
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "špecializované zariadenie",
+        "y": "48.676015421",
+        "x": "21.267579296"
+      },
+      "geometry": {
+        "x": 21.267579296,
+        "y": 48.676015421
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "požičiavanie pomôcok",
+        "y": "48.676015421",
+        "x": "21.267579296"
+      },
+      "geometry": {
+        "x": 21.267579296,
+        "y": 48.676015421
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "domov sociálnych služieb",
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "domov sociálnych služieb",
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "rehabilitačné stredisko",
+        "y": "48.714444172",
+        "x": "21.213086913"
+      },
+      "geometry": {
+        "x": 21.213086913,
+        "y": 48.714444172
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "útulok/nocľaháreň",
+        "y": "48.724213949",
+        "x": "21.271439646"
+      },
+      "geometry": {
+        "x": 21.271439646,
+        "y": 48.724213949
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "denné centrum",
+        "y": "48.715784056",
+        "x": "21.21709897"
+      },
+      "geometry": {
+        "x": 21.21709897,
+        "y": 48.715784056
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "komunitné centrum",
+        "y": "48.737014765",
+        "x": "21.268902457"
+      },
+      "geometry": {
+        "x": 21.268902457,
+        "y": 48.737014765
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "zariadenie pre seniorov",
+        "y": "48.737045352",
+        "x": "21.269017534"
+      },
+      "geometry": {
+        "x": 21.269017534,
+        "y": 48.737045352
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "opatrovateľská služba",
+        "y": "48.727089068",
+        "x": "21.289672567"
+      },
+      "geometry": {
+        "x": 21.289672567,
+        "y": 48.727089068
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "denný stacionár",
+        "y": "48.742606447",
+        "x": "21.282339395"
+      },
+      "geometry": {
+        "x": 21.282339395,
+        "y": 48.742606447
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "opatrovateľská služba",
+        "y": "48.727224341",
+        "x": "21.238663012"
+      },
+      "geometry": {
+        "x": 21.238663012,
+        "y": 48.727224341
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "nocľaháreň",
+        "y": "48.716995341",
+        "x": "21.242363709"
+      },
+      "geometry": {
+        "x": 21.242363709,
+        "y": 48.716995341
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "zariadenie pre seniorov",
+        "y": "48.729279006",
+        "x": "21.253909994"
+      },
+      "geometry": {
+        "x": 21.253909994,
+        "y": 48.729279006
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "prepravná služba",
+        "y": "48.729279006",
+        "x": "21.253909994"
+      },
+      "geometry": {
+        "x": 21.253909994,
+        "y": 48.729279006
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "jedáleň",
+        "y": "48.729279006",
+        "x": "21.253909994"
+      },
+      "geometry": {
+        "x": 21.253909994,
+        "y": 48.729279006
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "monitorovanie a signalizácia potreby pomoci",
+        "y": "48.729279006",
+        "x": "21.253909994"
+      },
+      "geometry": {
+        "x": 21.253909994,
+        "y": 48.729279006
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "útulok",
+        "y": "48.717544019",
+        "x": "21.206695022"
+      },
+      "geometry": {
+        "x": 21.206695022,
+        "y": 48.717544019
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "opatrovateľská služba",
+        "y": "48.726573597",
+        "x": "21.250716533"
+      },
+      "geometry": {
+        "x": 21.250716533,
+        "y": 48.726573597
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "prepravná služba",
+        "y": "48.733152522",
+        "x": "21.283588937"
+      },
+      "geometry": {
+        "x": 21.283588937,
+        "y": 48.733152522
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "denné centrum",
+        "y": "48.711327944",
+        "x": "21.258471241"
+      },
+      "geometry": {
+        "x": 21.258471241,
+        "y": 48.711327944
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "požičiavanie pomôcok",
+        "y": "48.715202994",
+        "x": "21.261572702"
+      },
+      "geometry": {
+        "x": 21.261572702,
+        "y": 48.715202994
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "prepravná služba",
+        "y": "48.715202994",
+        "x": "21.261572702"
+      },
+      "geometry": {
+        "x": 21.261572702,
+        "y": 48.715202994
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "zariadenie pre seniorov",
+        "y": "48.715202994",
+        "x": "21.261572702"
+      },
+      "geometry": {
+        "x": 21.261572702,
+        "y": 48.715202994
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "špecializované zariadenie",
+        "y": "48.715202994",
+        "x": "21.261572702"
+      },
+      "geometry": {
+        "x": 21.261572702,
+        "y": 48.715202994
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "zariadenie opatrovateľskej služby",
+        "y": "48.715202994",
+        "x": "21.261572702"
+      },
+      "geometry": {
+        "x": 21.261572702,
+        "y": 48.715202994
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "domov sociálnych služieb",
+        "y": "48.715202994",
+        "x": "21.261572702"
+      },
+      "geometry": {
+        "x": 21.261572702,
+        "y": 48.715202994
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "denný stacionár",
+        "y": "48.715202994",
+        "x": "21.261572702"
+      },
+      "geometry": {
+        "x": 21.261572702,
+        "y": 48.715202994
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "zariadenie opatrovateľskej služby",
+        "y": "48.712669675",
+        "x": "21.25957758"
+      },
+      "geometry": {
+        "x": 21.25957758,
+        "y": 48.712669675
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "domov sociálnych služieb",
+        "y": "48.729829434",
+        "x": "21.251971292"
+      },
+      "geometry": {
+        "x": 21.251971292,
+        "y": 48.729829434
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "opatrovateľská služba",
+        "y": "48.729829434",
+        "x": "21.251971292"
+      },
+      "geometry": {
+        "x": 21.251971292,
+        "y": 48.729829434
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "jedáleň",
+        "y": "48.729829434",
+        "x": "21.251971292"
+      },
+      "geometry": {
+        "x": 21.251971292,
+        "y": 48.729829434
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "požičiavanie pomôcok",
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "denný stacionár",
+        "y": "48.731446647",
+        "x": "21.250719399"
+      },
+      "geometry": {
+        "x": 21.250719399,
+        "y": 48.731446647
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "nepočujúca fyzická osoba",
+        "druh_sluzby": "tlmočnícka služba",
+        "y": "48.725213506",
+        "x": "21.257874296"
+      },
+      "geometry": {
+        "x": 21.257874296,
+        "y": 48.725213506
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "prepravná služba",
+        "y": "48.724209501",
+        "x": "21.247503824"
+      },
+      "geometry": {
+        "x": 21.247503824,
+        "y": 48.724209501
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "opatrovateľská služba",
+        "y": "48.724209501",
+        "x": "21.247503824"
+      },
+      "geometry": {
+        "x": 21.247503824,
+        "y": 48.724209501
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "komunitné centrum",
+        "y": "48.697363603",
+        "x": "21.221559964"
+      },
+      "geometry": {
+        "x": 21.221559964,
+        "y": 48.697363603
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "komunitné centrum",
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "komunitné centrum",
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "komunitné centrum",
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "komunitné centrum",
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "nízkoprahová sociálna služba",
+        "y": "48.697363603",
+        "x": "21.221559964"
+      },
+      "geometry": {
+        "x": 21.221559964,
+        "y": 48.697363603
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "komunitné centrum",
+        "y": "48.697363603",
+        "x": "21.221559964"
+      },
+      "geometry": {
+        "x": 21.221559964,
+        "y": 48.697363603
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "komunitné centrum",
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "denné centrum",
+        "y": "48.690814727",
+        "x": "21.212866664"
+      },
+      "geometry": {
+        "x": 21.212866664,
+        "y": 48.690814727
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, rodiny s deťmi",
+        "druh_sluzby": "denné centrum",
+        "y": "48.715789203",
+        "x": "21.236071098"
+      },
+      "geometry": {
+        "x": 21.236071098,
+        "y": 48.715789203
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "zariadenie opatrovateľskej služby",
+        "y": "48.715262932",
+        "x": "21.236568675"
+      },
+      "geometry": {
+        "x": 21.236568675,
+        "y": 48.715262932
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "denný stacionár",
+        "y": "48.726753805",
+        "x": "21.263209653"
+      },
+      "geometry": {
+        "x": 21.263209653,
+        "y": 48.726753805
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "zariadenie pre seniorov",
+        "y": "48.694715221",
+        "x": "21.201563056"
+      },
+      "geometry": {
+        "x": 21.201563056,
+        "y": 48.694715221
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "zariadenie pre seniorov",
+        "y": "48.638740845",
+        "x": "21.169222588"
+      },
+      "geometry": {
+        "x": 21.169222588,
+        "y": 48.638740845
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "denné centrum",
+        "y": "48.711342105",
+        "x": "21.258535609"
+      },
+      "geometry": {
+        "x": 21.258535609,
+        "y": 48.711342105
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "zariadenie opatrovateľskej služby",
+        "y": "48.715314853",
+        "x": "21.257219765"
+      },
+      "geometry": {
+        "x": 21.257219765,
+        "y": 48.715314853
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "opatrovateľská služba",
+        "y": "48.716872352",
+        "x": "21.256667528"
+      },
+      "geometry": {
+        "x": 21.256667528,
+        "y": 48.716872352
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "denné centrum",
+        "y": "48.706418498",
+        "x": "21.211304517"
+      },
+      "geometry": {
+        "x": 21.211304517,
+        "y": 48.706418498
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "domov sociálnych služieb",
+        "y": "48.706288689",
+        "x": "21.282613778"
+      },
+      "geometry": {
+        "x": 21.282613778,
+        "y": 48.706288689
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "zariadenie podporovaného bývania",
+        "y": "48.706288689",
+        "x": "21.282613778"
+      },
+      "geometry": {
+        "x": 21.282613778,
+        "y": 48.706288689
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "zariadenie pre seniorov",
+        "y": "48.706288689",
+        "x": "21.282613778"
+      },
+      "geometry": {
+        "x": 21.282613778,
+        "y": 48.706288689
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "špecializované zariadenie",
+        "y": "48.706288689",
+        "x": "21.282613778"
+      },
+      "geometry": {
+        "x": 21.282613778,
+        "y": 48.706288689
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "špecializované zariadenie",
+        "y": "48.740110878",
+        "x": "21.252002606"
+      },
+      "geometry": {
+        "x": 21.252002606,
+        "y": 48.740110878
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "domov sociálnych služieb",
+        "y": "48.740110878",
+        "x": "21.252002606"
+      },
+      "geometry": {
+        "x": 21.252002606,
+        "y": 48.740110878
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "útulok/nocľaháreň",
+        "y": "48.73297942",
+        "x": "21.301821186"
+      },
+      "geometry": {
+        "x": 21.301821186,
+        "y": 48.73297942
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "komunitné centrum",
+        "y": "48.696407401",
+        "x": "21.222975006"
+      },
+      "geometry": {
+        "x": 21.222975006,
+        "y": 48.696407401
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "opatrovateľská služba",
+        "y": "48.722787007",
+        "x": "21.252584093"
+      },
+      "geometry": {
+        "x": 21.252584093,
+        "y": 48.722787007
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "prepravná služba",
+        "y": "48.711642863",
+        "x": "21.239874201"
+      },
+      "geometry": {
+        "x": 21.239874201,
+        "y": 48.711642863
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "požičiavanie pomôcok",
+        "y": "48.712709945",
+        "x": "21.256733659"
+      },
+      "geometry": {
+        "x": 21.256733659,
+        "y": 48.712709945
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "zariadenie pre seniorov",
+        "y": "48.712709945",
+        "x": "21.256733659"
+      },
+      "geometry": {
+        "x": 21.256733659,
+        "y": 48.712709945
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "špecializované zariadenie",
+        "y": "48.712709945",
+        "x": "21.256733659"
+      },
+      "geometry": {
+        "x": 21.256733659,
+        "y": 48.712709945
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "rodiny s deťmi",
+        "druh_sluzby": "útulok",
+        "y": "48.732692632",
+        "x": "21.256868582"
+      },
+      "geometry": {
+        "x": 21.256868582,
+        "y": 48.732692632
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "opatrovateľská služba",
+        "y": "48.709152185",
+        "x": "21.258941545"
+      },
+      "geometry": {
+        "x": 21.258941545,
+        "y": 48.709152185
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "denné centrum",
+        "y": "48.689987816",
+        "x": "21.283763819"
+      },
+      "geometry": {
+        "x": 21.283763819,
+        "y": 48.689987816
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "rehabilitačné stredisko",
+        "y": "48.689862507",
+        "x": "21.284687095"
+      },
+      "geometry": {
+        "x": 21.284687095,
+        "y": 48.689862507
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "zariadenie opatrovateľskej služby",
+        "y": "48.740765533",
+        "x": "21.257581931"
+      },
+      "geometry": {
+        "x": 21.257581931,
+        "y": 48.740765533
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "domov sociálnych služieb",
+        "y": "48.734975667",
+        "x": "21.257609284"
+      },
+      "geometry": {
+        "x": 21.257609284,
+        "y": 48.734975667
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "nízkoprahová sociálna služba",
+        "y": "48.718983747",
+        "x": "21.253815941"
+      },
+      "geometry": {
+        "x": 21.253815941,
+        "y": 48.718983747
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "prepravná služba",
+        "y": "48.673644053",
+        "x": "21.302971961"
+      },
+      "geometry": {
+        "x": 21.302971961,
+        "y": 48.673644053
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "opatrovateľská služba",
+        "y": "48.714626571",
+        "x": "21.236177082"
+      },
+      "geometry": {
+        "x": 21.236177082,
+        "y": 48.714626571
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "špecializované zariadenie",
+        "y": "48.736810315",
+        "x": "21.252025323"
+      },
+      "geometry": {
+        "x": 21.252025323,
+        "y": 48.736810315
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "denný stacionár",
+        "y": "48.701888685",
+        "x": "21.258108071"
+      },
+      "geometry": {
+        "x": 21.258108071,
+        "y": 48.701888685
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "jedáleň",
+        "y": "48.714379998",
+        "x": "21.259177396"
+      },
+      "geometry": {
+        "x": 21.259177396,
+        "y": 48.714379998
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "útulok/nocľaháreň",
+        "y": "48.657561096",
+        "x": "21.315995552"
+      },
+      "geometry": {
+        "x": 21.315995552,
+        "y": 48.657561096
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "domov sociálnych služieb",
+        "y": "48.718997316",
+        "x": "21.237415988"
+      },
+      "geometry": {
+        "x": 21.237415988,
+        "y": 48.718997316
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "opatrovateľská služba",
+        "y": "48.720737158",
+        "x": "21.260857858"
+      },
+      "geometry": {
+        "x": 21.260857858,
+        "y": 48.720737158
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori",
+        "druh_sluzby": "denné centrum",
+        "y": "48.634212393",
+        "x": "21.171434854"
+      },
+      "geometry": {
+        "x": 21.171434854,
+        "y": 48.634212393
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "komunitné centrum",
+        "y": "48.634212393",
+        "x": "21.171434854"
+      },
+      "geometry": {
+        "x": 21.171434854,
+        "y": 48.634212393
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "seniori, zdravotne postihnuté osoby",
+        "druh_sluzby": "zariadenie pre seniorov",
+        "y": "48.67368845",
+        "x": "21.32062078"
+      },
+      "geometry": {
+        "x": 21.32062078,
+        "y": 48.67368845
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "zariadenie opatrovateľskej služby",
+        "y": "48.67368845",
+        "x": "21.32062078"
+      },
+      "geometry": {
+        "x": 21.32062078,
+        "y": 48.67368845
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "zdravotne postihnuté osoby",
+        "druh_sluzby": "denný stacionár",
+        "y": "48.67368845",
+        "x": "21.32062078"
+      },
+      "geometry": {
+        "x": 21.32062078,
+        "y": 48.67368845
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "útulok pre rodiny s deťmi",
+        "y": "48.67368845",
+        "x": "21.32062078"
+      },
+      "geometry": {
+        "x": 21.32062078,
+        "y": 48.67368845
+      }
+    },
+    {
+      "attributes": {
+        "cielova_skupina": "krízová intervencia",
+        "druh_sluzby": "komunitné centrum",
+        "y": null,
+        "x": null
+      }
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import styles from "./ChatMessage.module.css";
 import stylesGlass from "./Glass.module.css";
 
-function ChatMessage({ text, author, messageBlockWidth }) {
+function ChatMessage({ text, author }) {
   return (
     <div
       className={
@@ -9,7 +9,6 @@ function ChatMessage({ text, author, messageBlockWidth }) {
           ? styles.Chat__message__right + ' ' + stylesGlass.Glass__green
           : styles.Chat__message__left + ' ' + stylesGlass.Glass__orange
       }
-      style={{ width: messageBlockWidth }}
     >
       {text}
     </div>

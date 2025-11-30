@@ -19,7 +19,8 @@ function Chat({ className, handleChange, inputValue }) {
         opacity: 0,
       }}
       animate={{
-        width: isExpanded ? "500px" : 60,
+        width: isExpanded ? "37.5%" : 60,
+        minWidth: isExpanded ? "320px" : 60,
         height: isExpanded
           ? "calc(100vh - var(--header-height) - 16px - 8px)"
           : "60px",
@@ -109,25 +110,21 @@ function Chat({ className, handleChange, inputValue }) {
                     index % 2 === 0 ? styles.User__Message : styles.GPT__Message
                   }
                 >
-                  <span>
-                    {index % 2 === 0 ? (
-                      <ChatMessage
-                        text={
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                        }
-                        author="user"
-                        messageBlockWidth={350}
-                      />
-                    ) : (
-                      <ChatMessage
-                        text={
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                        }
-                        author="gpt"
-                        messageBlockWidth={350}
-                      />
-                    )}
-                  </span>
+                  {index % 2 === 0 ? (
+                    <ChatMessage
+                      text={
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                      }
+                      author="user"
+                    />
+                  ) : (
+                    <ChatMessage
+                      text={
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                      }
+                      author="gpt"
+                    />
+                  )}
                 </div>
               ))}
             </motion.div>

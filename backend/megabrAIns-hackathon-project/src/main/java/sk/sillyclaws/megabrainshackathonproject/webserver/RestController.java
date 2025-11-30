@@ -35,7 +35,8 @@ public class RestController {
             @RequestParam(defaultValue = "false") boolean transportation,
             @RequestParam(defaultValue = "false") boolean education,
             @RequestParam(defaultValue = "false") boolean social,
-            @RequestParam(defaultValue = "false") boolean culture
+            @RequestParam(defaultValue = "false") boolean culture,
+            @RequestParam(defaultValue = "false") boolean acceptance
     ) {
         List<Layer> layers = new ArrayList<>();
 
@@ -53,6 +54,9 @@ public class RestController {
         }
         if (culture) {
             layers.add(new Layer("culture", "Culture", layersService.getCultureLayer()));
+        }
+        if (acceptance) {
+            layers.add(new Layer("acceptance", "User Based Score", layersService.getUserAcceptanceLayer()));
         }
 
         return ResponseEntity.ok(layers);

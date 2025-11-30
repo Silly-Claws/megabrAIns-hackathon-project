@@ -3,8 +3,7 @@ package sk.sillyclaws.megabrainshackathonproject.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sk.sillyclaws.megabrainshackathonproject.config.CoordinatesConfig;
-import sk.sillyclaws.megabrainshackathonproject.models.Point;
-import sk.sillyclaws.megabrainshackathonproject.models.WeightedPoint;
+import sk.sillyclaws.megabrainshackathonproject.models.*;
 import sk.sillyclaws.megabrainshackathonproject.repository.*;
 
 import java.util.ArrayList;
@@ -22,6 +21,8 @@ public class LayersService {
     private final CultureJpa cultureRepo;
 
     private final GridGeneratorService gridGeneratorService;
+
+    private final UserParametersService userParametersService;
 
     private List<WeightedPoint> normalizePoints(List<WeightedPoint> points) {
         float max = points.stream()
@@ -56,10 +57,10 @@ public class LayersService {
         var aggregated = populationRepository.getPopulationGrid(latMin, latStep, lonMin, lonStep);
 
         var populationMap = new HashMap<String, Float>();
-        for (Object[] row : aggregated) {
-            int gLat = ((Number) row[0]).intValue();
-            int gLon = ((Number) row[1]).intValue();
-            float people = ((Number) row[2]).floatValue();
+        for (PopulationEntityWithoutId row : aggregated) {
+            int gLat = ((Number) row.getX()).intValue();
+            int gLon = ((Number) row.getY()).intValue();
+            float people = ((Number) row.getResidents()).floatValue();
             populationMap.put(gLat + ":" + gLon, people);
         }
 
@@ -78,17 +79,17 @@ public class LayersService {
 
         List<Point> grid = gridGeneratorService.generateGrid();
 
-        List<Object[]> rows = transportationRepository.getAllStops();
+        List<TransportEntity> rows = transportationRepository.getAllStops();
 
         record Stop(double lat, double lon, int weight) {}
 
         List<Stop> stops = rows.stream().map(r -> {
-            double lon = (double) r[0];
-            double lat = (double) r[1];
+            double lon = r.getX();
+            double lat = r.getY();
 
-            boolean bus = (boolean) r[2];
-            boolean trolley = (boolean) r[3];
-            boolean tram = (boolean) r[4];
+            boolean bus = r.isBus();
+            boolean trolley = r.isTrolley();
+            boolean tram = r.isTram();
 
             int weight = 0;
             if (bus) weight++;
@@ -124,17 +125,11 @@ public class LayersService {
         return normalizePoints(result);
     }
 
-    private List<WeightedPoint> generateSimpleCountLayer(List<Point> grid, List<Object[]> coords) {
-
-        record Obj(double lat, double lon) {}
-
-        List<Obj> objects = coords.stream()
-                .map(o -> new Obj((double) o[1], (double) o[0])) // y=lat x=lon
-                .toList();
+    private List<WeightedPoint> generateSimpleCountLayer(List<Point> grid, List<Point> coords) {
 
         List<WeightedPoint> result = new ArrayList<>();
 
-        double half = CoordinatesConfig.WALKING_DISTANCE / 2;
+        double half = CoordinatesConfig.WALKING_DISTANCE / 2.0;
 
         for (Point gp : grid) {
 
@@ -145,34 +140,162 @@ public class LayersService {
             double dLon = half / mLon;
 
             float count = 0;
-            for (Obj o : objects) {
-                if (Math.abs(o.lat - gp.lat()) <= dLat &&
-                        Math.abs(o.lon - gp.lon()) <= dLon) {
-                    count += 1;
+
+            // Count how many objects fall inside the square window
+            for (Point p : coords) {
+                if (Math.abs(p.lat() - gp.lat()) <= dLat &&
+                        Math.abs(p.lon() - gp.lon()) <= dLon) {
+                    count++;
                 }
             }
 
             result.add(new WeightedPoint(gp, count));
         }
 
-        return normalizePoints(result); // 0→1 scale
+        return normalizePoints(result);  // returns 0–1 scale across grid
     }
 
     public List<WeightedPoint> getSchoolsLayer() {
-        var grid = gridGeneratorService.generateGrid();
-        var coords = schoolsRepo.getAllSchools();
+        List<Point> grid = gridGeneratorService.generateGrid();
+
+        List<Point> coords = schoolsRepo.findAll().stream()
+                .map(e -> new Point(e.getY(), e.getX())) // lat = y, lon = x
+                .toList();
+
         return generateSimpleCountLayer(grid, coords);
     }
 
     public List<WeightedPoint> getSocialLayer() {
-        var grid = gridGeneratorService.generateGrid();
-        var coords = socialRepo.getAllSocial();
+        List<Point> grid = gridGeneratorService.generateGrid();
+
+        List<Point> coords = socialRepo.findAll().stream()
+                .map(e -> new Point(e.getY(), e.getX()))
+                .toList();
+
         return generateSimpleCountLayer(grid, coords);
     }
 
     public List<WeightedPoint> getCultureLayer() {
-        var grid = gridGeneratorService.generateGrid();
-        var coords = cultureRepo.getAllCulture();
+        List<Point> grid = gridGeneratorService.generateGrid();
+
+        List<Point> coords = cultureRepo.findAll().stream()
+                .map(e -> new Point(e.getY(), e.getX()))
+                .toList();
+
         return generateSimpleCountLayer(grid, coords);
+    }
+
+    public List<WeightedPoint> getUserAcceptanceLayer() {
+
+        List<Point> grid = gridGeneratorService.generateGrid();
+
+        // Preload all layers — avoids recalculations inside loop
+        List<WeightedPoint> populationGrid = getPopulationLayerGridded();     // 0–1 values
+        List<TransportEntity> transportStops = transportationRepository.getAllStops();
+        List<Point> schools = schoolsRepo.findAll().stream().map(e -> new Point(e.getY(), e.getX())).toList();
+        List<Point> socials = socialRepo.findAll().stream().map(e -> new Point(e.getY(), e.getX())).toList();
+        List<Point> culture = cultureRepo.findAll().stream().map(e -> new Point(e.getY(), e.getX())).toList();
+
+        List<WeightedPoint> result = new ArrayList<>();
+
+        for (int i = 0; i < grid.size(); i++) {
+
+            Point gp = grid.get(i);
+            float totalScore = 0;
+            int criteria = 0;
+
+            // =====================
+            // 1) POPULATION SCORE
+            // =====================
+            float pop = populationGrid.get(i).getWeight(); // already 0–1 normalized
+
+            if (userParametersService.getMinPopulation() > 0 || userParametersService.getMaxPopulation() > 0) {
+                criteria++;
+
+                // scale raw pop back to estimated 0–1 -> convert to actual scale
+                float min = userParametersService.getMinPopulation();
+                float max = userParametersService.getMaxPopulation();
+
+                if (pop >= min && pop <= max) {
+                    totalScore += 1f; // perfect
+                } else {
+                    float delta = (pop < min) ? min - pop : pop - max;
+                    float range = Math.max(0.1f, max - min);
+                    float score = Math.max(0f, 1f - delta / range);
+                    totalScore += score;
+                }
+            }
+
+            // =====================
+            // 2) TRANSPORT DISTANCE
+            // =====================
+            if (userParametersService.getMaxTransportDistanceMeters() > 0) {
+                criteria++;
+                double nearest = nearestDistance(gp, transportStops, userParametersService.getMaxTransportDistanceMeters());
+                if (nearest >= 0) totalScore += (float) (1 - (nearest / userParametersService.getMaxTransportDistanceMeters()));
+            }
+
+            // =====================
+            // 3) SCHOOLS COUNT
+            // =====================
+            if (userParametersService.getMinSchoolsNearby() > 0) {
+                criteria++;
+                int count = countNearby(gp, schools, userParametersService.getSchoolSearchRadiusMeters());
+                totalScore += Math.min(1f, count / userParametersService.getMinSchoolsNearby());
+            }
+
+            // =====================
+            // 4) SOCIAL SERVICES
+            // =====================
+            if (userParametersService.getMinSocialDistanceMeters() > 0) {
+                criteria++;
+                int count = countNearby(gp, socials, userParametersService.getSocialSearchRadiusMeters());
+                totalScore += Math.min(1f, count / userParametersService.getMinSocialDistanceMeters());
+            }
+
+            // =====================
+            // 5) CULTURE
+            // =====================
+            if (userParametersService.getMinCultureDistanceMeters() > 0) {
+                criteria++;
+                int count = countNearby(gp, culture, userParametersService.getCultureSearchRadiusMeters());
+                totalScore += Math.min(1f, count / userParametersService.getMinCultureDistanceMeters());
+            }
+
+            float finalScore = criteria == 0 ? 0 : totalScore / criteria;
+            result.add(new WeightedPoint(gp, finalScore));
+        }
+
+        return result;
+    }
+
+    private double nearestDistance(Point gp, List<TransportEntity> stops, double maxDist) {
+        double best = Double.MAX_VALUE;
+
+        double mLat = 111_320.0;
+        double mLon = 111_320.0 * Math.cos(Math.toRadians(gp.lat()));
+
+        for (TransportEntity t : stops) {
+            double dy = (t.getY() - gp.lat()) * mLat;
+            double dx = (t.getX() - gp.lon()) * mLon;
+            double d = Math.sqrt(dx*dx + dy*dy);
+            best = Math.min(best, d);
+        }
+        return best <= maxDist ? best : -1;
+    }
+
+    private int countNearby(Point gp, List<Point> coords, double r) {
+        double mLat = 111_320.0;
+        double mLon = 111_320.0 * Math.cos(Math.toRadians(gp.lat()));
+
+        double dLat = r / mLat;
+        double dLon = r / mLon;
+
+        int count = 0;
+        for (Point p : coords)
+            if (Math.abs(p.lat() - gp.lat()) <= dLat && Math.abs(p.lon() - gp.lon()) <= dLon)
+                count++;
+
+        return count;
     }
 }

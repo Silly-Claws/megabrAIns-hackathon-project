@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface TransportationJpa extends JpaRepository<TransportEntity, Long> {
     @Query(value = """
-    SELECT x, y, autobus, trolejbus, elektricka
+    SELECT id, x, y, autobus, trolejbus, elektricka
     FROM public_transport_points
 """, nativeQuery = true)
-    List<Object[]> getAllStops();
+    List<TransportEntity> getAllStops();
 }

@@ -7,9 +7,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Data
 @Table(name = "population_points")
-public class HousePopulationEntity {
+public class PopulationEntity {
     @Id
     private Long id;
 

@@ -24,16 +24,16 @@
   z-index: 100;
 }
 
-.LayerPicker {
-  position: absolute;
+/*.LayerPicker {*/
+/*  position: absolute;*/
 
-  height: calc(100vh - var(--header-height));
+/*  height: calc(100vh - var(--header-height));*/
 
-  top: var(--header-height);
-  left: 0;
+/*  top: var(--header-height);*/
+/*  left: 0;*/
 
-  max-height: calc(100vh - var(--header-height));
-}
+/*  max-height: calc(100vh - var(--header-height));*/
+/*}*/
 
 .Chat {
   height: calc(100vh - var(--header-height) - 16px - 8px);

@@ -35,6 +35,7 @@ export function LayerContextProvider({ children }) {
   };
 
   const [heatmaps, setHeatmaps] = useState({});
+  const [activeHeatIds, setActiveHeatIds] = useState([]);
   const activeHeatIdsRef = useRef([]);
   const heatLayersRef = useRef({});
   const [mapRef, setMapRef] = useState(null);
@@ -90,8 +91,7 @@ export function LayerContextProvider({ children }) {
   }
 
   function enableHeatmap(id) {
-    if (!id || !mapRef.current) return;
-    if (activeHeatIdsRef.current.includes(id)) return;
+    if (!id || !mapRef?.current || activeHeatIds.includes(id)) return;
 
     const heat = setHeatMap({
       map: mapRef.current,
@@ -101,11 +101,13 @@ export function LayerContextProvider({ children }) {
     });
 
     heatLayersRef.current[id] = heat;
-    activeHeatIdsRef.current.push(id);
+    setActiveHeatIds(prev => [...prev, id]);
   }
 
   function disableHeatmap(id) {
     if (!id || !mapRef.current || !heatLayersRef.current[id]) return;
+
+    setActiveHeatIds(prev => prev.filter(x => x !== id));
 
     const layer = heatLayersRef.current[id];
     if (!layer) return;
@@ -119,15 +121,16 @@ export function LayerContextProvider({ children }) {
   }
 
   function disableAllHeatmaps() {
-    activeHeatIdsRef.current.forEach(id => {
+    activeHeatIds.forEach(id => {
       deleteHeatMap(mapRef.current, heatLayersRef.current[id]);
+      heatLayersRef.current[id].destroy?.();
     });
     heatLayersRef.current = {};
     activeHeatIdsRef.current = [];
   }
 
   return (
-    <LayerContext.Provider value={{ setMapRef, availableLayers, enableHeatmap, disableHeatmap, disableAllHeatmaps }}>
+    <LayerContext.Provider value={{ setMapRef, availableLayers, enableHeatmap, disableHeatmap, disableAllHeatmaps, activeHeatIds }}>
       {children}
     </LayerContext.Provider>
   );

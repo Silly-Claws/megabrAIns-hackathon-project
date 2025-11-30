@@ -1,12 +1,13 @@
 import styles from "./ChatMessage.module.css";
+import stylesGlass from "./Glass.module.css";
 
 function ChatMessage({ text, author }) {
   return (
     <div
       className={
         author === "user"
-          ? styles.Chat__message__right
-          : styles.Chat__message__left
+          ? styles.Chat__message__right + ' ' + stylesGlass.Glass__green
+          : styles.Chat__message__left + ' ' + stylesGlass.Glass__orange
       }
     >
       {text}

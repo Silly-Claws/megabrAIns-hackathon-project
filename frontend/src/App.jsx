@@ -24,7 +24,6 @@ function App() {
     <div className={styles.Main__wrapper}>
       <Header className={styles.Header} />
       <Map className={styles.Map} />
-      <LayerPicker className={styles.LayerPicker} />
       {windowWidth > 478 ? (
         <Chat
           className={styles.Chat}

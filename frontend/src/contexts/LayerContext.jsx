@@ -8,31 +8,31 @@ const LayerContext = createContext(null);
 export function LayerContextProvider({ children }) {
   const initialGradients = {
     population: {
-      0.0: "rgba(0,0,0,0)",
+      0.0: "rgba(255,255,255,0)",
       0.025: "rgba(128,0,0,0.5)",
       0.05: "rgba(255,0,0,1)"
     },
     transportation: {
-      0.0: "rgba(0,0,0,0)",
-      0.3: "rgba(0,0,0,0)",
+      0.0: "rgba(255,255,255,0)",
+      // 0.3: "rgba(255,255,255,0)",
       0.5: "rgba(0,0,255,0.5)",
       1.0: "rgba(100,100,255,1)"
     },
     education: {
-      0.0: "rgba(0,0,0,0)",
-      0.3: "rgba(0,0,0,0)",
+      0.0: "rgba(255,255,255,0)",
+      // 0.3: "rgba(0,0,0,0)",
       0.5: "rgba(0,128,0,0.5)",
       1.0: "rgba(0,255,0,1)"
     },
     social: {
-      0.0: "rgba(0,0,0,0)",
-      0.3: "rgba(0,0,0,0)",
+      0.0: "rgba(255,255,255,0)",
+      // 0.3: "rgba(0,0,0,0)",
       0.5: "rgba(255,255,0,0.5)",
       1.0: "rgba(255,255,100,1)"
     },
     culture: {
-      0.0: "rgba(0,0,0,0)",
-      0.3: "rgba(0,0,0,0)",
+      0.0: "rgba(255,255,255,0)",
+      // 0.3: "rgba(0,0,0,0)",
       0.5: "rgba(255,0,242,0.5)",
       1.0: "rgb(216,100,255)"
     },
@@ -48,7 +48,6 @@ export function LayerContextProvider({ children }) {
   const activeHeatIdsRef = useRef([]);
   const heatLayersRef = useRef({});
   const [mapRef, setMapRef] = useState(null);
-  const [acceptanceHeatmap, setAcceptanceHeatmap] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -116,34 +115,28 @@ export function LayerContextProvider({ children }) {
         const layerData = result.find(layer => layer.name === "acceptance");
 
         if (layerData?.points) {
-          setAcceptanceHeatmap({
-            points: layerData.points.map(p => [
-              p.coordinate.lat,
-              p.coordinate.lon,
-              p.weight,
-            ]),
-            gradient: initialGradients.acceptance,
-          });
+          setHeatmaps(prev => ({
+            ...prev,
+            acceptance: {
+              points: layerData.points.map(p => [
+                p.coordinate.lat,
+                p.coordinate.lon,
+                p.weight
+              ]),
+              gradient: initialGradients.acceptance
+            }
+          }));
         }
       } catch (err) {
         console.error(err.message);
       }
     }
 
-    const points =
-      id === "acceptance"
-        ? acceptanceHeatmap?.points
-        : heatmaps[id]?.points;
-
-    const gradient =
-      id === "acceptance"
-        ? acceptanceHeatmap?.gradient
-        : heatmaps[id]?.gradient;
 
     const heat = setHeatMap({
       map: mapRef.current,
-      points: points,
-      gradient,
+      points: heatmaps[id].points,
+      gradient: heatmaps[id].gradient,
     });
 
     heatLayersRef.current[id] = heat;

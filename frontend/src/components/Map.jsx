@@ -1,11 +1,11 @@
-import {useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "leaflet.heat";
 
 import styles from "./Map.module.css";
-import {useLayerContext} from "../contexts/LayerContext.jsx";
-import {DEFAULT_MAP_ZOOM} from "../constants.js";
+import { useLayerContext } from "../contexts/LayerContext.jsx";
+import { BOTTOM_RIGHT, DEFAULT_MAP_ZOOM, TOP_LEFT } from "../constants.js";
 
 function Map({ className }) {
   const mapRef = useRef(null);
@@ -14,16 +14,17 @@ function Map({ className }) {
 
   useEffect(() => {
     mapRef.current = L.map("map", {
+      maxBounds: [TOP_LEFT, BOTTOM_RIGHT],
       center: [48.721182, 21.257564],
       zoom: DEFAULT_MAP_ZOOM,
-      minZoom: 12,
-      maxZoom: 16,
+      minZoom: DEFAULT_MAP_ZOOM,
+      maxZoom: 18,
       zoomControl: false,
-    }).setView([48.721182, 21.257564], 13);
+    }).setView([48.721182, 21.257564], DEFAULT_MAP_ZOOM);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(mapRef.current);
 
     // const initialPoints = [

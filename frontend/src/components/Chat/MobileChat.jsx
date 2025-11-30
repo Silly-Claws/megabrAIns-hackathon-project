@@ -3,6 +3,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import stylesGlass from "../Glass.module.css";
 import ChatMessage from "../ChatMessage";
+import LayerPicker from "../LayerPicker";
 
 function MobileChat({
   className,
@@ -29,14 +30,49 @@ function MobileChat({
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className={styles.Minimize__icon__wrapper}
           >
-            <button onClick={() => setIsConversationExpanded((prev) => !prev)}>
-              "Minimize Icon"
+            <button
+              onClick={() => setIsConversationExpanded((prev) => !prev)}
+              className={`${styles.Toggle__button} ${stylesGlass.Glass__green}`}
+            >
+              <svg
+                className={styles.Toggle__button__icon}
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.84611 13.5381L9.4615 13.5381C10.0138 13.5381 10.4615 13.9858 10.4615 14.5381L10.4615 18.1535"
+                  stroke="#F3F3EF"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M9.69248 14.3072L4.30786 19.6919"
+                  stroke="#F3F3EF"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M13.5382 5.84657L13.5382 9.46196C13.5382 10.0142 13.9859 10.462 14.5382 10.462L18.1535 10.462"
+                  stroke="#F3F3EF"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M14.3075 9.69269L19.6921 4.30807"
+                  stroke="#F3F3EF"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
             </button>
           </motion.div>
         )}
       </AnimatePresence>
       <AnimatePresence>
-        {isConversationExpanded && (
+        {isConversationExpanded && !showLayers ? (
           <motion.div
             className={styles.Chat__history}
             initial={{ opacity: 0, height: 0 }}
@@ -73,7 +109,7 @@ function MobileChat({
               ))}
             </AnimatePresence>
           </motion.div>
-        )}
+        ) : null}
       </AnimatePresence>
 
       <div className={styles.Chat__wrapper}>
@@ -167,23 +203,7 @@ function MobileChat({
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            {[
-              "Population",
-              "Population",
-              "Population",
-              "Population",
-              "Population",
-            ].map((item, idx) => (
-              <motion.span
-                key={idx}
-                className={styles.Layer__item}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.05 }}
-              >
-                {item}
-              </motion.span>
-            ))}
+            <LayerPicker />
           </motion.div>
         )}
       </AnimatePresence>

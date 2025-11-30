@@ -1,97 +1,97 @@
 .LayerPicker {
-    width: 100%;
-    min-width: 200px;
-    height: fit-content;
+  width: 100%;
+  min-width: 200px;
+  height: fit-content;
 
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, auto);
-    gap: 10px 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 10px 20px;
+  padding: 0 16px;
 
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*flex-wrap: wrap;*/
-    /*row-gap: 8px;*/
-    /*column-gap: 32px;*/
+  /*display: flex;*/
+  /*flex-direction: row;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*flex-wrap: wrap;*/
+  /*row-gap: 8px;*/
+  /*column-gap: 32px;*/
 
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .Checkbox {
-    width: 100%;
+  width: 100%;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
 
-    cursor: pointer;
-    user-select: none;
-    position: relative;
-    padding-left: 0;
+  gap: 8px;
+
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  padding-left: 0;
 }
 
 .Checkbox input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
 
 .Checkmark {
-    position: relative;
-    left: 0;
-    top: 0;
-    height: 18px;
-    width: 18px;
-    border-radius: 4px;
-    transition: all 0.2s;
+  position: relative;
+  left: 0;
+  top: 0;
+  height: 18px;
+  width: 18px;
+  border-radius: 4px;
+  transition: all 0.2s;
 
-    background: linear-gradient(
-            135deg,
-            rgba(77, 207, 155, 0.8),
-            rgba(77, 207, 155, 0.5)
-    );
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: linear-gradient(
+    135deg,
+    rgba(77, 207, 155, 0.8),
+    rgba(77, 207, 155, 0.5)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .Checkmark::after {
-    content: "";
-    position: absolute;
-    display: none;
+  content: "";
+  position: absolute;
+  display: none;
 }
 
 .Checkbox input:checked ~ .Checkmark {
-    background: linear-gradient(
-            135deg,
-            rgba(77, 207, 155, 0.8),
-            rgba(77, 207, 155, 0.5)
-    );
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: linear-gradient(
+    135deg,
+    rgba(77, 207, 155, 0.8),
+    rgba(77, 207, 155, 0.5)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .Checkbox input:checked ~ .Checkmark::after {
-    display: block;
-    left: 5px;
-    top: 5px;
-    width: 8px;
-    height: 8px;
-    border-radius: 2px;
+  display: block;
+  left: 5px;
+  top: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
 
-    background: linear-gradient(
-            135deg,
-            rgba(255, 145, 37, 0.8),
-            rgba(231, 134, 43, 0.5)
-    );
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 145, 37, 0.8),
+    rgba(231, 134, 43, 0.5)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }

@@ -22,6 +22,8 @@ public class LayersService {
 
     private final GridGeneratorService gridGeneratorService;
 
+    private final UserParametersService userParametersService;
+
     private List<WeightedPoint> normalizePoints(List<WeightedPoint> points) {
         float max = points.stream()
                 .map(WeightedPoint::getWeight)
@@ -183,7 +185,117 @@ public class LayersService {
         return generateSimpleCountLayer(grid, coords);
     }
 
-//    public List<WeightedPoint> getUserAcceptanceLayer() {
-//
-//    }
+    public List<WeightedPoint> getUserAcceptanceLayer() {
+
+        List<Point> grid = gridGeneratorService.generateGrid();
+
+        // Preload all layers — avoids recalculations inside loop
+        List<WeightedPoint> populationGrid = getPopulationLayerGridded();     // 0–1 values
+        List<TransportEntity> transportStops = transportationRepository.getAllStops();
+        List<Point> schools = schoolsRepo.findAll().stream().map(e -> new Point(e.getY(), e.getX())).toList();
+        List<Point> socials = socialRepo.findAll().stream().map(e -> new Point(e.getY(), e.getX())).toList();
+        List<Point> culture = cultureRepo.findAll().stream().map(e -> new Point(e.getY(), e.getX())).toList();
+
+        List<WeightedPoint> result = new ArrayList<>();
+
+        for (int i = 0; i < grid.size(); i++) {
+
+            Point gp = grid.get(i);
+            float totalScore = 0;
+            int criteria = 0;
+
+            // =====================
+            // 1) POPULATION SCORE
+            // =====================
+            float pop = populationGrid.get(i).getWeight(); // already 0–1 normalized
+
+            if (userParametersService.getMinPopulation() > 0 || userParametersService.getMaxPopulation() > 0) {
+                criteria++;
+
+                // scale raw pop back to estimated 0–1 -> convert to actual scale
+                float min = userParametersService.getMinPopulation();
+                float max = userParametersService.getMaxPopulation();
+
+                if (pop >= min && pop <= max) {
+                    totalScore += 1f; // perfect
+                } else {
+                    float delta = (pop < min) ? min - pop : pop - max;
+                    float range = Math.max(0.1f, max - min);
+                    float score = Math.max(0f, 1f - delta / range);
+                    totalScore += score;
+                }
+            }
+
+            // =====================
+            // 2) TRANSPORT DISTANCE
+            // =====================
+            if (userParametersService.getMaxTransportDistanceMeters() > 0) {
+                criteria++;
+                double nearest = nearestDistance(gp, transportStops, userParametersService.getMaxTransportDistanceMeters());
+                if (nearest >= 0) totalScore += (float) (1 - (nearest / userParametersService.getMaxTransportDistanceMeters()));
+            }
+
+            // =====================
+            // 3) SCHOOLS COUNT
+            // =====================
+            if (userParametersService.getMinSchoolsNearby() > 0) {
+                criteria++;
+                int count = countNearby(gp, schools, userParametersService.getSchoolSearchRadiusMeters());
+                totalScore += Math.min(1f, count / userParametersService.getMinSchoolsNearby());
+            }
+
+            // =====================
+            // 4) SOCIAL SERVICES
+            // =====================
+            if (userParametersService.getMinSocialDistanceMeters() > 0) {
+                criteria++;
+                int count = countNearby(gp, socials, userParametersService.getSocialSearchRadiusMeters());
+                totalScore += Math.min(1f, count / userParametersService.getMinSocialDistanceMeters());
+            }
+
+            // =====================
+            // 5) CULTURE
+            // =====================
+            if (userParametersService.getMinCultureDistanceMeters() > 0) {
+                criteria++;
+                int count = countNearby(gp, culture, userParametersService.getCultureSearchRadiusMeters());
+                totalScore += Math.min(1f, count / userParametersService.getMinCultureDistanceMeters());
+            }
+
+            float finalScore = criteria == 0 ? 0 : totalScore / criteria;
+            result.add(new WeightedPoint(gp, finalScore));
+        }
+
+        return result;
+    }
+
+    private double nearestDistance(Point gp, List<TransportEntity> stops, double maxDist) {
+        double best = Double.MAX_VALUE;
+
+        double mLat = 111_320.0;
+        double mLon = 111_320.0 * Math.cos(Math.toRadians(gp.lat()));
+
+        for (TransportEntity t : stops) {
+            double dy = (t.getY() - gp.lat()) * mLat;
+            double dx = (t.getX() - gp.lon()) * mLon;
+            double d = Math.sqrt(dx*dx + dy*dy);
+            best = Math.min(best, d);
+        }
+        return best <= maxDist ? best : -1;
+    }
+
+    private int countNearby(Point gp, List<Point> coords, double r) {
+        double mLat = 111_320.0;
+        double mLon = 111_320.0 * Math.cos(Math.toRadians(gp.lat()));
+
+        double dLat = r / mLat;
+        double dLon = r / mLon;
+
+        int count = 0;
+        for (Point p : coords)
+            if (Math.abs(p.lat() - gp.lat()) <= dLat && Math.abs(p.lon() - gp.lon()) <= dLon)
+                count++;
+
+        return count;
+    }
 }

@@ -16,10 +16,10 @@ public class UserParametersService {
     private float schoolSearchRadiusMeters;
 
     private float maxCultureDistanceMeters;
-    private float minCultureDistanceMeters;
+    private float minCultureNearby;
     private float cultureSearchRadiusMeters;
 
     private float maxSocialDistanceMeters;
-    private float minSocialDistanceMeters;
+    private float minSocialNearby;
     private float socialSearchRadiusMeters;
 }

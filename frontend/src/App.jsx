@@ -9,6 +9,8 @@ import { useState } from "react";
 import { useWindow } from "./hooks/useWindow.js";
 import { useChat } from "./hooks/useChat.js";
 
+import ZoomButton from "./components/mapUtils/ZoomButton.jsx";
+
 function App() {
   const [value, setValue] = useState("");
   const { windowWidth } = useWindow();
@@ -40,6 +42,7 @@ function App() {
     <div className={styles.Main__wrapper}>
       <Header className={styles.Header} />
       <Map className={styles.Map} />
+      <ZoomButton className={styles.Zoom__button} />
       {windowWidth > 478 ? (
         <Chat
           className={styles.Chat}

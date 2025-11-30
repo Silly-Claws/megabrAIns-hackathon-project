@@ -31,7 +31,8 @@ function Chat({
         opacity: 0,
       }}
       animate={{
-        width: isExpanded ? "500px" : 60,
+        width: isExpanded ? "37.5%" : 60,
+        minWidth: isExpanded ? "320px" : "unset",
         height: isExpanded
           ? "calc(100vh - var(--header-height) - 16px - 8px)"
           : "60px",

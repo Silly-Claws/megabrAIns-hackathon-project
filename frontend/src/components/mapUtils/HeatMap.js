@@ -17,7 +17,7 @@ export function setHeatMap({ map, points, gradient, baseRadius = POINTS_RADIUS})
 
   const heatLayer = L.heatLayer(points, {
     radius: radius,
-    blur: radius / 2,
+    blur: radius / POINTS_BLUR,
     gradient,
     minOpacity: 0,
   }).addTo(map);
@@ -34,11 +34,24 @@ export function setHeatMap({ map, points, gradient, baseRadius = POINTS_RADIUS})
     return newBaseRadius;
   }
 
+  // function getBlur() {
+  //   const zoom = map.getZoom();
+  //
+  //   console.log("New zoom: " + zoom);
+  //
+  //   const newBlur = zoomToBlur[zoom];
+  //
+  //   console.log("New newBlur: " + newBlur);
+  //
+  //   return newBlur;
+  // }
+
   function onZoom() {
     const radius = getRadius();
+
     heatLayer.setOptions({
       radius: radius,
-      blur: radius / 2,
+      blur: radius / POINTS_BLUR,
       gradient,
       minOpacity: 0,
     });

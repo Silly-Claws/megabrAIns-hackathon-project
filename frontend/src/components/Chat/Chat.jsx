@@ -87,48 +87,44 @@ function Chat({ className, handleChange, inputValue }) {
           )}
         </motion.button>
       </div>
-      <AnimatePresence mode="wait">
-        {isExpanded && (
-          <motion.div
-            className={styles.Chat__history}
-            exit={{ opacity: 0 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-          >
-            {Array.from({ length: 30 }).map((item, index) => (
-              <div
-                key={index}
-                className={
-                  index % 2 === 0 ? styles.User__Message : styles.GPT__Message
-                }
-              >
-                <span>
-                  {index % 2 === 0 ? (
-                    <ChatMessage
-                      text={
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                      }
-                      author="user"
-                    />
-                  ) : (
-                    <ChatMessage
-                      text={
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                      }
-                      author="gpt"
-                    />
-                  )}
-                </span>
-              </div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <AnimatePresence mode="wait">
         {isExpanded && (
-          <>
+          <div>
+            <motion.div
+              className={styles.Chat__history}
+              exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+            >
+              {Array.from({ length: 2 }).map((item, index) => (
+                <div
+                  key={index}
+                  className={
+                    index % 2 === 0 ? styles.User__Message : styles.GPT__Message
+                  }
+                >
+                  <span>
+                    {index % 2 === 0 ? (
+                      <ChatMessage
+                        text={
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                        }
+                        author="user"
+                      />
+                    ) : (
+                      <ChatMessage
+                        text={
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                        }
+                        author="gpt"
+                      />
+                    )}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
             <div className={styles.Chat__wrapper}>
               <button
                 className={`${styles.Button} ${
@@ -222,7 +218,7 @@ function Chat({ className, handleChange, inputValue }) {
                 </motion.div>
               )}
             </AnimatePresence>
-          </>
+          </div>
         )}
       </AnimatePresence>
     </motion.div>

@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .Menu__arrowIcon__wrapper {
@@ -53,6 +54,8 @@
   scrollbar-width: none; /* Firefox */
   gap: 12px;
   padding: var(--spacing-md);
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 /* Chrome, Safari, Opera */

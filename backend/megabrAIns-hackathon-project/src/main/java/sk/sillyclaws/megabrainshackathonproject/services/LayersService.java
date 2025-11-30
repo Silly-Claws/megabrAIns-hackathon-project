@@ -195,9 +195,21 @@ public class LayersService {
                 .stream()
                 .map(e -> new Point(e.getY(), e.getX())) // lat = Y, lon = X
                 .toList();
-        List<Point> schools = schoolsRepo.findAll().stream().map(e -> new Point(e.getY(), e.getX())).toList();
-        List<Point> socials = socialRepo.findAll().stream().map(e -> new Point(e.getY(), e.getX())).toList();
-        List<Point> culture = cultureRepo.findAll().stream().map(e -> new Point(e.getY(), e.getX())).toList();
+
+        List<Point> schoolPoints = schoolsRepo.findAll()
+                .stream()
+                .map(e -> new Point(e.getY(), e.getX()))
+                .toList();
+
+        List<Point> socialPoints = socialRepo.findAll()
+                .stream()
+                .map(e -> new Point(e.getY(), e.getX()))
+                .toList();
+
+        List<Point> culturePoints = cultureRepo.getAllCulture()
+                .stream()
+                .map(e -> new Point(e.getY(), e.getX())) // lat = Y, lon = X
+                .toList();
 
         List<WeightedPoint> result = new ArrayList<>();
 
@@ -247,18 +259,11 @@ public class LayersService {
                 float maxDistance = userParametersService.getMaxSchoolDistanceMeters();
                 activeFilters++;
 
-                List<Point> schoolPoints = schoolsRepo.findAll()
-                        .stream()
-                        .map(e -> new Point(e.getY(), e.getX()))
-                        .toList();
-
                 double nearest = nearestDistance(gp, schoolPoints);
 
                 if (countNearby(gp, schoolPoints, radius) >= min && nearest <= maxDistance)
                     totalScore += 1f;
             }
-
-
 
             // ==========================================================
             // 4) SOCIAL SERVICES — binary (like culture)
@@ -270,17 +275,11 @@ public class LayersService {
                 float maxDistance = userParametersService.getMaxSocialDistanceMeters();
                 activeFilters++;
 
-                List<Point> socialPoints = socialRepo.findAll()
-                        .stream()
-                        .map(e -> new Point(e.getY(), e.getX()))
-                        .toList();
-
                 double nearest = nearestDistance(gp, socialPoints);
 
                 if (countNearby(gp, socialPoints, radius) >= min && nearest <= maxDistance)
                     totalScore += 1f;
             }
-
 
             // ==========================================================
             // 5) CULTURE — ONLY IF ENABLED (binary like schools+social)
@@ -289,10 +288,6 @@ public class LayersService {
 
                 float min = userParametersService.getMinCultureNearby();
                 float radius = userParametersService.getCultureSearchRadiusMeters();
-                List<Point> culturePoints = cultureRepo.getAllCulture()
-                        .stream()
-                        .map(e -> new Point(e.getY(), e.getX())) // lat = Y, lon = X
-                        .toList();
 
                 double nearest = nearestDistance(gp, culturePoints);
                 float maxDistance = userParametersService.getMaxCultureDistanceMeters();
@@ -300,13 +295,12 @@ public class LayersService {
 
 //                System.out.println("MaxDistance: " + maxDistance + " nearest: " + nearest + " MinCultureNearby: " + min);
 
-                if (countNearby(gp, culture, radius) >= min && nearest <= maxDistance) {
+                if (countNearby(gp, culturePoints, radius) >= min && nearest <= maxDistance) {
                     totalScore += 1f;
                 } else {
 //                    System.out.println("Culture returns 0");
                 }
             }
-
 
             // Normalize by number of active criteria
             float finalScore = activeFilters == 0 ? 0 : (totalScore / activeFilters);

@@ -1,0 +1,40 @@
+.ZoomButton {
+    width: 48px;
+    height: 96px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    border-radius: 24px;
+}
+
+.Button {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    outline: none;
+    border: none;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.Button:hover {
+    scale: 1.05;
+    transition: 300ms;
+    cursor: pointer;
+}
+
+.Icon {
+    width: 24px;
+    height: 24px;
+}

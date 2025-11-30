@@ -18,6 +18,7 @@ function Map({ className }) {
       zoom: DEFAULT_MAP_ZOOM,
       minZoom: 12,
       maxZoom: 16,
+      zoomControl: false,
     }).setView([48.721182, 21.257564], 13);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {

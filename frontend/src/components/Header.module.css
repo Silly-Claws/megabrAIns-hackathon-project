@@ -1,9 +1,62 @@
 .Header {
+    box-sizing: border-box;
+
     position: absolute;
 
     height: var(--header-height);
 
+    padding: 6px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+
     margin: 8px 8px 0 8px;
 
     border-radius: 24px;
+}
+
+.Logo__wrapper {
+    width: fit-content;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 4px;
+}
+
+.Logo {
+    width: 48px;
+    height: 48px;
+}
+
+.Title__wrapper {
+    width: fit-content;
+    height: 100%;
+
+    padding-bottom: 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}
+
+.Title__wrapper h1 {
+    margin: 0 0 -2px 0;
+
+    font-size: 16px;
+}
+
+.Title__wrapper h2 {
+    margin: -2px 0 0 0;
+
+    font-size: 14px;
+    font-weight: 300;
 }

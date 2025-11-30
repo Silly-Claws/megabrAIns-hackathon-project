@@ -15,123 +15,82 @@ public class UserParametersTools {
         this.userParametersService = userParametersService;
     }
 
-    @Tool("Set the minimum population threshold for user preferences in the accommodation search.")
-    public void setMinPopulation(float minPopulation) {
+    @Tool("Set the population searching parameters. The number of people leaves in nearby rectangle 400x400 meters")
+    public void setPopulationPreferences(boolean usePopulationFilter, float minPopulation, float maxPopulation) {
+        userParametersService.setUsePopulationFilter(usePopulationFilter);
         userParametersService.setMinPopulation(minPopulation);
-    }
-
-    @Tool("Get the current minimum population threshold for user preferences.")
-    public float getMinPopulation() {
-        return userParametersService.getMinPopulation();
-    }
-
-    @Tool("Set the maximum population threshold for user preferences in the accommodation search.")
-    public void setMaxPopulation(float maxPopulation) {
         userParametersService.setMaxPopulation(maxPopulation);
     }
 
-    @Tool("Get the current maximum population threshold for user preferences.")
-    public float getMaxPopulation() {
-        return userParametersService.getMaxPopulation();
-    }
-
     @Tool("Set the maximum distance in meters to public transport for user preferences.")
-    public void setMaxTransportDistanceMeters(float maxTransportDistanceMeters) {
+    public void setMaxTransportDistanceMeters(boolean useTransportFilter, float maxTransportDistanceMeters) {
+        userParametersService.setUseTransportFilter(useTransportFilter);
         userParametersService.setMaxTransportDistanceMeters(maxTransportDistanceMeters);
     }
 
-    @Tool("Get the current maximum distance in meters to public transport.")
-    public float getMaxTransportDistanceMeters() {
-        return userParametersService.getMaxTransportDistanceMeters();
-    }
-
-    @Tool("Set the maximum distance in meters to schools for user preferences.")
-    public void setMaxSchoolDistanceMeters(float maxSchoolDistanceMeters) {
+    @Tool("Set the parameters about schools nearby.")
+    public void setMaxSchoolDistanceMeters(boolean useSchoolFilter, float maxSchoolDistanceMeters, float minSchoolsNearby, float schoolSearchRadiusMeters) {
+        userParametersService.setUseSchoolFilter(useSchoolFilter);
         userParametersService.setMaxSchoolDistanceMeters(maxSchoolDistanceMeters);
-    }
-
-    @Tool("Get the current maximum distance in meters to schools.")
-    public float getMaxSchoolDistanceMeters() {
-        return userParametersService.getMaxSchoolDistanceMeters();
-    }
-
-    @Tool("Set the minimum number of schools nearby for user preferences.")
-    public void setMinSchoolsNearby(float minSchoolsNearby) {
         userParametersService.setMinSchoolsNearby(minSchoolsNearby);
-    }
-
-    @Tool("Get the current minimum number of schools nearby.")
-    public float getMinSchoolsNearby() {
-        return userParametersService.getMinSchoolsNearby();
-    }
-
-    @Tool("Set the search radius in meters for schools in user preferences.")
-    public void setSchoolSearchRadiusMeters(float schoolSearchRadiusMeters) {
         userParametersService.setSchoolSearchRadiusMeters(schoolSearchRadiusMeters);
     }
 
-    @Tool("Get the current search radius in meters for schools.")
-    public float getSchoolSearchRadiusMeters() {
-        return userParametersService.getSchoolSearchRadiusMeters();
-    }
-
-    @Tool("Set the maximum distance in meters to cultural institutes for user preferences.")
-    public void setMaxCultureDistanceMeters(float maxCultureDistanceMeters) {
+    @Tool("Set searching parameters for cultural institutions.")
+    public void setMaxCultureDistanceMeters(boolean useCultureFilter, float maxCultureDistanceMeters,  float minCultureNearby, float cultureSearchRadiusMeters) {
+        userParametersService.setUseCultureFilter(useCultureFilter);
         userParametersService.setMaxCultureDistanceMeters(maxCultureDistanceMeters);
-    }
-
-    @Tool("Get the current maximum distance in meters to cultural institutes.")
-    public float getMaxCultureDistanceMeters() {
-        return userParametersService.getMaxCultureDistanceMeters();
-    }
-
-    @Tool("Set the minimum number of cultural institutes in user preferences.")
-    public void setMinCultureDistanceMeters(float minCultureDistanceMeters) {
-        userParametersService.setMinCultureNearby(minCultureDistanceMeters);
-    }
-
-    @Tool("Get the current minimum number in meters of cultural institutes nearby.")
-    public float getMinCultureDistanceMeters() {
-        return userParametersService.getMinCultureNearby();
-    }
-
-    @Tool("Set the search radius in meters for cultural institutes in user preferences.")
-    public void setCultureSearchRadiusMeters(float cultureSearchRadiusMeters) {
+        userParametersService.setMinCultureNearby(minCultureNearby);
         userParametersService.setCultureSearchRadiusMeters(cultureSearchRadiusMeters);
     }
 
-    @Tool("Get the current search radius in meters for cultural institutes.")
-    public float getCultureSearchRadiusMeters() {
-        return userParametersService.getCultureSearchRadiusMeters();
-    }
-
-    @Tool("Set the maximum distance in meters to social services for user preferences.")
-    public void setMaxSocialDistanceMeters(float maxSocialDistanceMeters) {
+    @Tool("Set searching parameters for social services nearby.")
+    public void setMaxSocialDistanceMeters(boolean useSocialFilter, float maxSocialDistanceMeters, float minSocialNearby, float socialSearchRadiusMeters) {
+        userParametersService.setUseSocialFilter(useSocialFilter);
         userParametersService.setMaxSocialDistanceMeters(maxSocialDistanceMeters);
-    }
-
-    @Tool("Get the current maximum distance in meters to social services.")
-    public float getMaxSocialDistanceMeters() {
-        return userParametersService.getMaxSocialDistanceMeters();
-    }
-
-    @Tool("Set the minimum number of social services in user preferences.")
-    public void setMinSocialDistanceMeters(float minSocialDistanceMeters) {
-        userParametersService.setMinSocialNearby(minSocialDistanceMeters);
-    }
-
-    @Tool("Get the current minimum number of social services nearby.")
-    public float getMinSocialDistanceMeters() {
-        return userParametersService.getMinSocialNearby();
-    }
-
-    @Tool("Set the search radius in meters for social services in user preferences.")
-    public void setSocialSearchRadiusMeters(float socialSearchRadiusMeters) {
+        userParametersService.setMinSocialNearby(minSocialNearby);
         userParametersService.setSocialSearchRadiusMeters(socialSearchRadiusMeters);
     }
 
-    @Tool("Get the current search radius in meters for social services.")
-    public float getSocialSearchRadiusMeters() {
-        return userParametersService.getSocialSearchRadiusMeters();
+    @Tool("Get summary of currently active filters with their parameters.")
+    public String getActiveFiltersSummary() {
+        return """
+        Population filter: %s
+        ↳ min: %s | max: %s at nearest 400x400 meters square
+
+        Transport filter: %s
+        ↳ max distance: %s m
+
+        Schools filter: %s
+        ↳ max distance: %s m | min nearby: %s | radius: %s m
+
+        Culture filter: %s
+        ↳ max distance: %s m | min nearby: %s | radius: %s m
+
+        Social filter: %s
+        ↳ max distance: %s m | min nearby: %s | radius: %s m
+        """.formatted(
+                userParametersService.isUsePopulationFilter(),
+                userParametersService.getMinPopulation(),
+                userParametersService.getMaxPopulation(),
+
+                userParametersService.isUseTransportFilter(),
+                userParametersService.getMaxTransportDistanceMeters(),
+
+                userParametersService.isUseSchoolFilter(),
+                userParametersService.getMaxSchoolDistanceMeters(),
+                userParametersService.getMinSchoolsNearby(),
+                userParametersService.getSchoolSearchRadiusMeters(),
+
+                userParametersService.isUseCultureFilter(),
+                userParametersService.getMaxCultureDistanceMeters(),
+                userParametersService.getMinCultureNearby(),
+                userParametersService.getCultureSearchRadiusMeters(),
+
+                userParametersService.isUseSocialFilter(),
+                userParametersService.getMaxSocialDistanceMeters(),
+                userParametersService.getMinSocialNearby(),
+                userParametersService.getSocialSearchRadiusMeters()
+        );
     }
 }

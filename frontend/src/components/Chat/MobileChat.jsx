@@ -39,26 +39,29 @@ function MobileChat({ className, handleChange, inputValue }) {
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             {Array.from({ length: 2 }).map((item, index) => (
-              <div key={index}>
-                <span>
-                  {index % 2 === 0 ? (
-                    <ChatMessage
-                      text={
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                      }
-                      author="user"
-                      messageBlockWidth="280px"
-                    />
-                  ) : (
-                    <ChatMessage
-                      text={
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                      }
-                      author="gpt"
-                      messageBlockWidth="280px"
-                    />
-                  )}
-                </span>
+              <div
+                key={index}
+                className={
+                  index % 2 === 0 ? styles.User__Message : styles.GPT__Message
+                }
+              >
+                {index % 2 === 0 ? (
+                  <ChatMessage
+                    text={
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                    }
+                    author="user"
+                    messageBlockWidth="280px"
+                  />
+                ) : (
+                  <ChatMessage
+                    text={
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                    }
+                    author="gpt"
+                    messageBlockWidth="280px"
+                  />
+                )}
               </div>
             ))}
           </motion.div>
@@ -92,49 +95,46 @@ function MobileChat({ className, handleChange, inputValue }) {
           value={inputValue}
           onChange={handleChange}
         />
-        <motion.button
-          className={`${styles.Toggle__button} ${
-            isConversationExpanded
-              ? stylesGlass.Glass__orange
-              : stylesGlass.Glass__green
-          }`}
-          onClick={() => setIsConversationExpanded((prev) => !prev)}
-          animate={{ rotate: isConversationExpanded ? 0 : 180 }}
-          transition={{ duration: 0.3 }}
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+
+        {!isConversationExpanded ? (
+          <button
+            className={`${styles.Toggle__button} ${
+              isConversationExpanded
+                ? stylesGlass.Glass__orange
+                : stylesGlass.Glass__green
+            }`}
+            onClick={() => setIsConversationExpanded((prev) => !prev)}
           >
-            <path
-              d="M5.84611 13.5381L9.4615 13.5381C10.0138 13.5381 10.4615 13.9858 10.4615 14.5381L10.4615 18.1535"
-              stroke="#F3F3EF"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-            <path
-              d="M9.69248 14.3072L4.30786 19.6919"
-              stroke="#F3F3EF"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-            <path
-              d="M13.5382 5.84657L13.5382 9.46196C13.5382 10.0142 13.9859 10.462 14.5382 10.462L18.1535 10.462"
-              stroke="#F3F3EF"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-            <path
-              d="M14.3075 9.69269L19.6921 4.30807"
-              stroke="#F3F3EF"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg>
-        </motion.button>
+            <svg
+              className={styles.Toggle__button__icon}
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.61539 19.3846L5 19.3846C4.44772 19.3846 4 18.9369 4 18.3846L4 14.7692M4.76918 18.6155L10.1538 13.2309M19.3844 8.61514L19.3844 4.99976C19.3844 4.44747 18.9367 3.99976 18.3844 3.99976L14.769 3.99976M18.6152 4.76902L13.2305 10.1536"
+                stroke="#F3F3EF"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        ) : (
+          <button
+            className={`${styles.Toggle__button} ${stylesGlass.Glass__green}`}
+            onClick={() => setIsConversationExpanded((prev) => !prev)}
+          >
+            <svg
+              className={styles.Toggle__button__icon}
+              width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M17.7232 4.75895C18.6613 4.44624 19.5538 5.33873 19.2411 6.27684L14.1845 21.4467C13.8561 22.4318 12.5163 22.5631 12.0029 21.6603L8.9078 16.2172C8.64089 15.7478 8.25223 15.3591 7.78283 15.0922L2.33973 11.9971C1.437 11.4838 1.56824 10.1439 2.55342 9.81555L17.7232 4.75895Z" stroke="#F3F3EF" strokeWidth="1.5"/>
+              <path d="M10.7856 13.2144L8.78564 15.2144" stroke="#F3F3EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        )}
       </div>
       <AnimatePresence>
         {showLayers && (

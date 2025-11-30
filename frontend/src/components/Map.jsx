@@ -17,8 +17,8 @@ function Map({ className }) {
       maxBounds: [TOP_LEFT, BOTTOM_RIGHT],
       center: [48.721182, 21.257564],
       zoom: DEFAULT_MAP_ZOOM,
-      minZoom: DEFAULT_MAP_ZOOM,
-      maxZoom: 18,
+      minZoom: 12,
+      maxZoom: 16,
       zoomControl: false,
     }).setView([48.721182, 21.257564], DEFAULT_MAP_ZOOM);
 

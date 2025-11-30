@@ -19,7 +19,7 @@ export function setHeatMap({ map, points, gradient, baseRadius = POINTS_RADIUS})
     radius: radius,
     blur: radius / POINTS_BLUR,
     gradient,
-    minOpacity: 0,
+    minOpacity: 0.1,
   }).addTo(map);
 
   function getRadius() {

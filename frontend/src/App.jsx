@@ -10,7 +10,7 @@ import { useWindow } from "./hooks/useWindow.js";
 
 import { useChat } from "./hooks/useChat.js";
 
-import {Zoom} from "leaflet/src/control/Control.Zoom.js";
+import { Zoom } from "leaflet/src/control/Control.Zoom.js";
 
 import ZoomButton from "./components/mapUtils/ZoomButton.jsx";
 
@@ -55,7 +55,13 @@ function App() {
           messages={messages}
         />
       ) : (
-        <MobileChat className={styles.MobileChat} />
+        <MobileChat
+          className={styles.MobileChat}
+          inputValue={value}
+          handleChange={handleChange}
+          handleSendQuery={handleSendQuery}
+          messages={messages}
+        />
       )}
     </div>
   );

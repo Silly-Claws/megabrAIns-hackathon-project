@@ -4,7 +4,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import stylesGlass from "../Glass.module.css";
 import ChatMessage from "../ChatMessage";
 
-function MobileChat({ className, handleChange, inputValue }) {
+function MobileChat({
+  className,
+  handleChange,
+  inputValue,
+  messages,
+  handleSendQuery,
+}) {
   const [showLayers, setShowLayers] = useState(false);
   const [isConversationExpanded, setIsConversationExpanded] = useState(false);
 
@@ -38,32 +44,34 @@ function MobileChat({ className, handleChange, inputValue }) {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            {Array.from({ length: 2 }).map((item, index) => (
-              <div
-                key={index}
-                className={
-                  index % 2 === 0 ? styles.User__Message : styles.GPT__Message
-                }
-              >
-                {index % 2 === 0 ? (
-                  <ChatMessage
-                    text={
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                    }
-                    author="user"
-                    messageBlockWidth="280px"
-                  />
-                ) : (
-                  <ChatMessage
-                    text={
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                    }
-                    author="gpt"
-                    messageBlockWidth="280px"
-                  />
-                )}
-              </div>
-            ))}
+            <AnimatePresence mode="popLayout">
+              {messages.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className={
+                    index % 2 === 0 ? styles.User__Message : styles.GPT__Message
+                  }
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                >
+                  {index % 2 === 0 ? (
+                    <ChatMessage
+                      text={item}
+                      author="user"
+                      messageBlockWidth="280px"
+                    />
+                  ) : (
+                    <ChatMessage
+                      text={item}
+                      author="gpt"
+                      messageBlockWidth="280px"
+                    />
+                  )}
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </motion.div>
         )}
       </AnimatePresence>
@@ -124,14 +132,28 @@ function MobileChat({ className, handleChange, inputValue }) {
         ) : (
           <button
             className={`${styles.Toggle__button} ${stylesGlass.Glass__green}`}
-            onClick={() => setIsConversationExpanded((prev) => !prev)}
+            onClick={() => handleSendQuery()}
           >
             <svg
               className={styles.Toggle__button__icon}
-              width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M17.7232 4.75895C18.6613 4.44624 19.5538 5.33873 19.2411 6.27684L14.1845 21.4467C13.8561 22.4318 12.5163 22.5631 12.0029 21.6603L8.9078 16.2172C8.64089 15.7478 8.25223 15.3591 7.78283 15.0922L2.33973 11.9971C1.437 11.4838 1.56824 10.1439 2.55342 9.81555L17.7232 4.75895Z" stroke="#F3F3EF" strokeWidth="1.5"/>
-              <path d="M10.7856 13.2144L8.78564 15.2144" stroke="#F3F3EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path
+                d="M17.7232 4.75895C18.6613 4.44624 19.5538 5.33873 19.2411 6.27684L14.1845 21.4467C13.8561 22.4318 12.5163 22.5631 12.0029 21.6603L8.9078 16.2172C8.64089 15.7478 8.25223 15.3591 7.78283 15.0922L2.33973 11.9971C1.437 11.4838 1.56824 10.1439 2.55342 9.81555L17.7232 4.75895Z"
+                stroke="#F3F3EF"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M10.7856 13.2144L8.78564 15.2144"
+                stroke="#F3F3EF"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
         )}

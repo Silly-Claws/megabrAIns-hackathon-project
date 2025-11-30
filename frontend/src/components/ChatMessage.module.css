@@ -1,7 +1,5 @@
 .Chat__message__left {
-  width: calc(100% - 56px);
   margin-right: 56px;
-
   border-radius: var(--default-border-r, 12px) var(--default-border-r, 12px)
     var(--default-border-r, 12px) 0;
   color: #ffffff;
@@ -9,7 +7,6 @@
 }
 
 .Chat__message__right {
-  width: calc(100% - 56px);
   margin-left: 56px;
 
   border-radius: var(--default-border-r, 12px) var(--default-border-r, 12px) 0

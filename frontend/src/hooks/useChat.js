@@ -1,5 +1,5 @@
 export function useChat() {
-  async function handleSendRequest(prompt) {
+  async function sendRequest(prompt) {
     try {
       const response = await fetch("http://localhost:8080/prompt", {
         method: "POST",
@@ -21,5 +21,5 @@ export function useChat() {
     }
   }
 
-  return { handleSendRequest };
+  return { sendRequest };
 }

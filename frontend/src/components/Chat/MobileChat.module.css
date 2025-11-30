@@ -97,15 +97,11 @@
 .Chat__history {
   display: flex;
   flex-direction: column;
+  align-items: ce;
+  gap: 12px;
   padding: var(--default-spacing);
 
   overflow: scroll;
-}
-
-.User__Message {
-  display: flex;
-
-  justify-content: end;
 }
 
 .Minimize__icon__wrapper {

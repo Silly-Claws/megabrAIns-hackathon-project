@@ -1,6 +1,6 @@
 import styles from "./ChatMessage.module.css";
 
-function ChatMessage({ text, author }) {
+function ChatMessage({ text, author, messageBlockWidth }) {
   return (
     <div
       className={
@@ -8,6 +8,7 @@ function ChatMessage({ text, author }) {
           ? styles.Chat__message__right
           : styles.Chat__message__left
       }
+      style={{ width: messageBlockWidth }}
     >
       {text}
     </div>

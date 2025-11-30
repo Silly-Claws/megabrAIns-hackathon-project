@@ -5,7 +5,6 @@
   box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.25);
   color: #ffffff;
   padding: var(--spacing-md) var(--spacing-lg);
-  width: 350px;
 }
 
 .Chat__message__right {
@@ -15,5 +14,4 @@
   box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.25);
   color: #ffffff;
   padding: var(--spacing-md) var(--spacing-lg);
-  width: 350px;
 }

@@ -19,6 +19,9 @@ function Chat({ className, handleChange, inputValue }) {
       }}
       animate={{
         width: isExpanded ? "500px" : 60,
+        height: isExpanded
+          ? "calc(100vh - var(--header-height) - 16px - 8px)"
+          : "60px",
         opacity: 1,
       }}
       exit={{ width: 0, opacity: 0 }}
@@ -112,6 +115,7 @@ function Chat({ className, handleChange, inputValue }) {
                           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                         }
                         author="user"
+                        messageBlockWidth={350}
                       />
                     ) : (
                       <ChatMessage
@@ -119,6 +123,7 @@ function Chat({ className, handleChange, inputValue }) {
                           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                         }
                         author="gpt"
+                        messageBlockWidth={350}
                       />
                     )}
                   </span>
@@ -165,26 +170,17 @@ function Chat({ className, handleChange, inputValue }) {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <rect
-                    x="8"
-                    y="2"
-                    width="8"
-                    height="13"
-                    rx="4"
+                  <path
+                    d="M17.7232 4.75895C18.6613 4.44624 19.5538 5.33873 19.2411 6.27684L14.1845 21.4467C13.8561 22.4318 12.5163 22.5631 12.0029 21.6603L8.9078 16.2172C8.64089 15.7478 8.25223 15.3591 7.78283 15.0922L2.33973 11.9971C1.437 11.4838 1.56824 10.1439 2.55342 9.81555L17.7232 4.75895Z"
                     stroke="#F3F3EF"
                     strokeWidth="1.5"
                   />
                   <path
-                    d="M20 11.5C20 15.9183 16.4183 19.5 12 19.5C7.58172 19.5 4 15.9183 4 11.5"
+                    d="M10.7856 13.2144L8.78564 15.2144"
                     stroke="#F3F3EF"
                     strokeWidth="1.5"
                     strokeLinecap="round"
-                  />
-                  <path
-                    d="M12 22V20"
-                    stroke="#F3F3EF"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </button>

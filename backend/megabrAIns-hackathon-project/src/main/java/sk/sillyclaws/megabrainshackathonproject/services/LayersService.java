@@ -3,8 +3,7 @@ package sk.sillyclaws.megabrainshackathonproject.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sk.sillyclaws.megabrainshackathonproject.config.CoordinatesConfig;
-import sk.sillyclaws.megabrainshackathonproject.models.Point;
-import sk.sillyclaws.megabrainshackathonproject.models.WeightedPoint;
+import sk.sillyclaws.megabrainshackathonproject.models.*;
 import sk.sillyclaws.megabrainshackathonproject.repository.*;
 
 import java.util.ArrayList;
@@ -56,10 +55,10 @@ public class LayersService {
         var aggregated = populationRepository.getPopulationGrid(latMin, latStep, lonMin, lonStep);
 
         var populationMap = new HashMap<String, Float>();
-        for (Object[] row : aggregated) {
-            int gLat = ((Number) row[0]).intValue();
-            int gLon = ((Number) row[1]).intValue();
-            float people = ((Number) row[2]).floatValue();
+        for (PopulationEntityWithoutId row : aggregated) {
+            int gLat = ((Number) row.getX()).intValue();
+            int gLon = ((Number) row.getY()).intValue();
+            float people = ((Number) row.getResidents()).floatValue();
             populationMap.put(gLat + ":" + gLon, people);
         }
 
@@ -78,17 +77,17 @@ public class LayersService {
 
         List<Point> grid = gridGeneratorService.generateGrid();
 
-        List<Object[]> rows = transportationRepository.getAllStops();
+        List<TransportEntity> rows = transportationRepository.getAllStops();
 
         record Stop(double lat, double lon, int weight) {}
 
         List<Stop> stops = rows.stream().map(r -> {
-            double lon = (double) r[0];
-            double lat = (double) r[1];
+            double lon = r.getX();
+            double lat = r.getY();
 
-            boolean bus = (boolean) r[2];
-            boolean trolley = (boolean) r[3];
-            boolean tram = (boolean) r[4];
+            boolean bus = r.isBus();
+            boolean trolley = r.isTrolley();
+            boolean tram = r.isTram();
 
             int weight = 0;
             if (bus) weight++;
@@ -124,17 +123,11 @@ public class LayersService {
         return normalizePoints(result);
     }
 
-    private List<WeightedPoint> generateSimpleCountLayer(List<Point> grid, List<Object[]> coords) {
-
-        record Obj(double lat, double lon) {}
-
-        List<Obj> objects = coords.stream()
-                .map(o -> new Obj((double) o[1], (double) o[0])) // y=lat x=lon
-                .toList();
+    private List<WeightedPoint> generateSimpleCountLayer(List<Point> grid, List<Point> coords) {
 
         List<WeightedPoint> result = new ArrayList<>();
 
-        double half = CoordinatesConfig.WALKING_DISTANCE / 2;
+        double half = CoordinatesConfig.WALKING_DISTANCE / 2.0;
 
         for (Point gp : grid) {
 
@@ -145,34 +138,52 @@ public class LayersService {
             double dLon = half / mLon;
 
             float count = 0;
-            for (Obj o : objects) {
-                if (Math.abs(o.lat - gp.lat()) <= dLat &&
-                        Math.abs(o.lon - gp.lon()) <= dLon) {
-                    count += 1;
+
+            // Count how many objects fall inside the square window
+            for (Point p : coords) {
+                if (Math.abs(p.lat() - gp.lat()) <= dLat &&
+                        Math.abs(p.lon() - gp.lon()) <= dLon) {
+                    count++;
                 }
             }
 
             result.add(new WeightedPoint(gp, count));
         }
 
-        return normalizePoints(result); // 0→1 scale
+        return normalizePoints(result);  // returns 0–1 scale across grid
     }
 
     public List<WeightedPoint> getSchoolsLayer() {
-        var grid = gridGeneratorService.generateGrid();
-        var coords = schoolsRepo.getAllSchools();
+        List<Point> grid = gridGeneratorService.generateGrid();
+
+        List<Point> coords = schoolsRepo.findAll().stream()
+                .map(e -> new Point(e.getY(), e.getX())) // lat = y, lon = x
+                .toList();
+
         return generateSimpleCountLayer(grid, coords);
     }
 
     public List<WeightedPoint> getSocialLayer() {
-        var grid = gridGeneratorService.generateGrid();
-        var coords = socialRepo.getAllSocial();
+        List<Point> grid = gridGeneratorService.generateGrid();
+
+        List<Point> coords = socialRepo.findAll().stream()
+                .map(e -> new Point(e.getY(), e.getX()))
+                .toList();
+
         return generateSimpleCountLayer(grid, coords);
     }
 
     public List<WeightedPoint> getCultureLayer() {
-        var grid = gridGeneratorService.generateGrid();
-        var coords = cultureRepo.getAllCulture();
+        List<Point> grid = gridGeneratorService.generateGrid();
+
+        List<Point> coords = cultureRepo.findAll().stream()
+                .map(e -> new Point(e.getY(), e.getX()))
+                .toList();
+
         return generateSimpleCountLayer(grid, coords);
     }
+
+//    public List<WeightedPoint> getUserAcceptanceLayer() {
+//
+//    }
 }

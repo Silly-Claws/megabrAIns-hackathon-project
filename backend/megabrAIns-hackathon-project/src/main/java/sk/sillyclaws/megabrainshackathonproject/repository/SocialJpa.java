@@ -7,6 +7,6 @@ import sk.sillyclaws.megabrainshackathonproject.models.SocialEntity;
 import java.util.List;
 
 public interface SocialJpa extends JpaRepository<SocialEntity, Long> {
-    @Query(value = "SELECT x, y FROM social_services_points", nativeQuery = true)
-    List<Object[]> getAllSocial();
+    @Query(value = "SELECT id, x, y FROM social_services_points", nativeQuery = true)
+    List<SocialEntity> getAllSocial();
 }

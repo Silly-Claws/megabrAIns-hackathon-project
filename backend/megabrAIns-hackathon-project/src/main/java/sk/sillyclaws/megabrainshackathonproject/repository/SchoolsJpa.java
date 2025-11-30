@@ -7,8 +7,8 @@ import sk.sillyclaws.megabrainshackathonproject.models.SchoolEntity;
 import java.util.List;
 
 public interface SchoolsJpa extends JpaRepository<SchoolEntity, Long> {
-    @Query(value = "SELECT x, y FROM school_points", nativeQuery = true)
-    List<Object[]> getAllSchools();
+    @Query(value = "SELECT id, x, y FROM school_points", nativeQuery = true)
+    List<SchoolEntity> getAllSchools();
 }
 
 

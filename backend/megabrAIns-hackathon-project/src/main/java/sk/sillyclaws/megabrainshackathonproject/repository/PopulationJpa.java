@@ -3,11 +3,12 @@ package sk.sillyclaws.megabrainshackathonproject.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import sk.sillyclaws.megabrainshackathonproject.models.HousePopulationEntity;
+import sk.sillyclaws.megabrainshackathonproject.models.PopulationEntity;
+import sk.sillyclaws.megabrainshackathonproject.models.PopulationEntityWithoutId;
 
 import java.util.List;
 
-public interface PopulationJpa extends JpaRepository<HousePopulationEntity, Long> {
+public interface PopulationJpa extends JpaRepository<PopulationEntity, Long> {
 
     @Query(value = """
     SELECT 
@@ -17,7 +18,7 @@ public interface PopulationJpa extends JpaRepository<HousePopulationEntity, Long
     FROM population_points
     GROUP BY gridLat, gridLon
 """, nativeQuery = true)
-    List<Object[]> getPopulationGrid(
+    List<PopulationEntityWithoutId> getPopulationGrid(
             @Param("latMin") double latMin,
             @Param("latStep") double latStep,
             @Param("lonMin") double lonMin,

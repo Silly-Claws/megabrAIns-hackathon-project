@@ -189,12 +189,12 @@ public class LayersService {
 
         List<Point> grid = gridGeneratorService.generateGrid();
 
-        // Preload all layers — avoids recalculations inside loop
-        List<WeightedPoint> populationGrid = getPopulationLayerGridded();     // 0–1 values
+        // ===== Preload all datasets once =====
+        List<WeightedPoint> populationGrid = getPopulationLayerGridded();
         List<TransportEntity> transportStops = transportationRepository.getAllStops();
-        List<Point> schools = schoolsRepo.findAll().stream().map(e -> new Point(e.getY(), e.getX())).toList();
-        List<Point> socials = socialRepo.findAll().stream().map(e -> new Point(e.getY(), e.getX())).toList();
-        List<Point> culture = cultureRepo.findAll().stream().map(e -> new Point(e.getY(), e.getX())).toList();
+        List<Point> schools = schoolsRepo.findAll().stream().map(e -> new Point(e.getX(), e.getY())).toList();
+        List<Point> socials = socialRepo.findAll().stream().map(e -> new Point(e.getX(), e.getY())).toList();
+        List<Point> culture = cultureRepo.findAll().stream().map(e -> new Point(e.getX(), e.getY())).toList();
 
         List<WeightedPoint> result = new ArrayList<>();
 
@@ -202,67 +202,83 @@ public class LayersService {
 
             Point gp = grid.get(i);
             float totalScore = 0;
-            int criteria = 0;
+            int activeFilters = 0;
 
-            // =====================
-            // 1) POPULATION SCORE
-            // =====================
-            float pop = populationGrid.get(i).getWeight(); // already 0–1 normalized
+            // ==========================================================
+            // 1) POPULATION — ONLY IF ENABLED
+            // ==========================================================
+            if (userParametersService.isUsePopulationFilter()) {
 
-            if (userParametersService.getMinPopulation() > 0 || userParametersService.getMaxPopulation() > 0) {
-                criteria++;
-
-                // scale raw pop back to estimated 0–1 -> convert to actual scale
+                float pop = populationGrid.get(i).getWeight();  // 0–1 normalized already
                 float min = userParametersService.getMinPopulation();
                 float max = userParametersService.getMaxPopulation();
 
+                activeFilters++;
+
                 if (pop >= min && pop <= max) {
-                    totalScore += 1f; // perfect
+                    totalScore += 1f;                                   // ideal fit
                 } else {
                     float delta = (pop < min) ? min - pop : pop - max;
                     float range = Math.max(0.1f, max - min);
-                    float score = Math.max(0f, 1f - delta / range);
-                    totalScore += score;
+                    totalScore += Math.max(0f, 1f - delta / range);     // smooth penalty
                 }
             }
 
-            // =====================
-            // 2) TRANSPORT DISTANCE
-            // =====================
-            if (userParametersService.getMaxTransportDistanceMeters() > 0) {
-                criteria++;
-                double nearest = nearestDistance(gp, transportStops, userParametersService.getMaxTransportDistanceMeters());
-                if (nearest >= 0) totalScore += (float) (1 - (nearest / userParametersService.getMaxTransportDistanceMeters()));
+            // ==========================================================
+            // 2) TRANSPORT DISTANCE — ONLY IF ENABLED
+            // ==========================================================
+            if (userParametersService.isUseTransportFilter()) {
+
+                float radius = userParametersService.getMaxTransportDistanceMeters();
+                activeFilters++;
+
+                double nearest = nearestDistance(gp, transportStops, radius);
+                if (nearest >= 0)
+                    totalScore += (float) (1 - nearest / radius);
             }
 
-            // =====================
-            // 3) SCHOOLS COUNT
-            // =====================
-            if (userParametersService.getMinSchoolsNearby() > 0) {
-                criteria++;
-                int count = countNearby(gp, schools, userParametersService.getSchoolSearchRadiusMeters());
-                totalScore += Math.min(1f, count / userParametersService.getMinSchoolsNearby());
+            // ==========================================================
+            // 3) SCHOOLS — ONLY IF ENABLED
+            // ==========================================================
+            if (userParametersService.isUseSchoolFilter()) {
+
+                float min = userParametersService.getMinSchoolsNearby();
+                float radius = userParametersService.getSchoolSearchRadiusMeters();
+                activeFilters++;
+
+                int count = countNearby(gp, schools, radius);
+                totalScore += Math.min(1f, count / min);
             }
 
-            // =====================
-            // 4) SOCIAL SERVICES
-            // =====================
-            if (userParametersService.getMinSocialNearby() > 0) {
-                criteria++;
-                int count = countNearby(gp, socials, userParametersService.getSocialSearchRadiusMeters());
-                totalScore += Math.min(1f, count / userParametersService.getMinSocialNearby());
+            // ==========================================================
+            // 4) SOCIAL SERVICES — ONLY IF ENABLED
+            // ==========================================================
+            if (userParametersService.isUseSocialFilter()) {
+
+                float min = userParametersService.getMinSocialNearby();
+                float radius = userParametersService.getSocialSearchRadiusMeters();
+                activeFilters++;
+
+                int count = countNearby(gp, socials, radius);
+                totalScore += Math.min(1f, count / min);
             }
 
-            // =====================
-            // 5) CULTURE
-            // =====================
-            if (userParametersService.getMinCultureNearby() > 0) {
-                criteria++;
-                int count = countNearby(gp, culture, userParametersService.getCultureSearchRadiusMeters());
-                totalScore += Math.min(1f, count / userParametersService.getMinCultureNearby());
+            // ==========================================================
+            // 5) CULTURE — ONLY IF ENABLED
+            // ==========================================================
+            if (userParametersService.isUseCultureFilter()) {
+
+                float min = userParametersService.getMinCultureNearby();
+                float radius = userParametersService.getCultureSearchRadiusMeters();
+                activeFilters++;
+
+                int count = countNearby(gp, culture, radius);
+                totalScore += Math.min(1f, count / min);
             }
 
-            float finalScore = criteria == 0 ? 0 : totalScore / criteria;
+
+            // Normalize by number of active criteria
+            float finalScore = activeFilters == 0 ? 0 : (totalScore / activeFilters);
             result.add(new WeightedPoint(gp, finalScore));
         }
 

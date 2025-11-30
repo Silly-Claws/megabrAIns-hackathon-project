@@ -2,6 +2,7 @@ import styles from "./MobileChat.module.css";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import stylesGlass from "../Glass.module.css";
+import ChatMessage from "../ChatMessage";
 
 function MobileChat({ className, handleChange, inputValue }) {
   const [showLayers, setShowLayers] = useState(false);
@@ -37,12 +38,27 @@ function MobileChat({ className, handleChange, inputValue }) {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            {Array.from({ length: 30 }).map((item, index) => (
-              <div
-                key={index}
-                className={index % 2 === 0 ? styles.User__Message : ""}
-              >
-                <span>{index % 2 === 0 ? "User message" : "Chat message"}</span>
+            {Array.from({ length: 2 }).map((item, index) => (
+              <div key={index}>
+                <span>
+                  {index % 2 === 0 ? (
+                    <ChatMessage
+                      text={
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                      }
+                      author="user"
+                      messageBlockWidth="280px"
+                    />
+                  ) : (
+                    <ChatMessage
+                      text={
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                      }
+                      author="gpt"
+                      messageBlockWidth="280px"
+                    />
+                  )}
+                </span>
               </div>
             ))}
           </motion.div>
@@ -87,30 +103,32 @@ function MobileChat({ className, handleChange, inputValue }) {
           transition={{ duration: 0.3 }}
         >
           <svg
-            className={styles.Button__icon}
             width="24"
             height="24"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <rect
-              x="8"
-              y="2"
-              width="8"
-              height="13"
-              rx="4"
-              stroke="#F3F3EF"
-              strokeWidth="1.5"
-            />
             <path
-              d="M20 11.5C20 15.9183 16.4183 19.5 12 19.5C7.58172 19.5 4 15.9183 4 11.5"
+              d="M5.84611 13.5381L9.4615 13.5381C10.0138 13.5381 10.4615 13.9858 10.4615 14.5381L10.4615 18.1535"
               stroke="#F3F3EF"
               strokeWidth="1.5"
               strokeLinecap="round"
             />
             <path
-              d="M12 22V20"
+              d="M9.69248 14.3072L4.30786 19.6919"
+              stroke="#F3F3EF"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M13.5382 5.84657L13.5382 9.46196C13.5382 10.0142 13.9859 10.462 14.5382 10.462L18.1535 10.462"
+              stroke="#F3F3EF"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M14.3075 9.69269L19.6921 4.30807"
               stroke="#F3F3EF"
               strokeWidth="1.5"
               strokeLinecap="round"

@@ -3,7 +3,6 @@
     var(--default-border-r, 12px) 0;
   color: #ffffff;
   padding: var(--spacing-md) var(--spacing-lg);
-  width: 350px;
 }
 
 .Chat__message__right {
@@ -11,5 +10,4 @@
     var(--default-border-r, 12px);
   color: #ffffff;
   padding: var(--spacing-md) var(--spacing-lg);
-  width: 350px;
 }

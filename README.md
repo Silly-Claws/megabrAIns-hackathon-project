@@ -4,7 +4,11 @@
 
 **Pocket realtor** is a data-driven platform designed to help people make quick and confident property decisions when buying or renting. Rather than relying on biased property advertisements and seller interests, our service provides objective analysis of urban environments to match properties with users' lifestyle preferences and needs.
 
+![Demo](readmeData/first.gif)
+
 The platform combines interactive mapping technology with AI-powered natural language processing to transform property hunting from a weeks-long research process into an intuitive, data-backed experience.
+
+![Demo](readmeData/second.gif)
 
 ---
 

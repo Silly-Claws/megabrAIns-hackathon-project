@@ -7,18 +7,34 @@ import Chat from "./components/Chat/Chat.jsx";
 import MobileChat from "./components/Chat/MobileChat.jsx";
 import { useState } from "react";
 import { useWindow } from "./hooks/useWindow.js";
+import { useChat } from "./hooks/useChat.js";
 
 function App() {
   const [value, setValue] = useState("");
   const { windowWidth } = useWindow();
 
+  const [messages, setMessages] = useState([]);
+
+  const { sendRequest } = useChat();
+
   const handleChange = (e) => {
     setValue(e.target.value);
   };
 
-  const handleSendQuery = (value) => {
-    console.log(value);
-  };
+  function handleSendQuery() {
+    if (value.trim().length === 0) return;
+    const prompt = `User context: ${messages.join(
+      "; "
+    )}; Current prompt: ${value}`;
+
+    setMessages((prev) => [...prev, value]);
+    setValue("");
+
+    sendRequest(prompt).then(
+      (response) =>
+        response && setMessages((prev) => [...prev, response.response])
+    );
+  }
 
   return (
     <div className={styles.Main__wrapper}>
@@ -30,6 +46,7 @@ function App() {
           inputValue={value}
           handleChange={handleChange}
           handleSendQuery={handleSendQuery}
+          messages={messages}
         />
       ) : (
         <MobileChat className={styles.MobileChat} />

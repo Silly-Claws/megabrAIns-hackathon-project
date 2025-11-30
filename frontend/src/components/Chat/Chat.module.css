@@ -4,6 +4,8 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 .Menu__arrowIcon__wrapper {
@@ -43,15 +45,23 @@
   cursor: pointer;
 }
 
+.Chat__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
 .Chat__history {
   display: flex;
   flex-direction: column;
-  overflow: auto;
   /* keep scrolling functional but hide native scrollbars */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   gap: 12px;
   padding: var(--spacing-md);
+  overflow: auto;
   flex: 1 1 auto;
   min-height: 0;
 }
@@ -111,6 +121,7 @@
   flex-direction: column;
   padding: 0 12px 12px 12px;
   overflow: hidden;
+  flex: 0 0 auto;
 }
 
 .User__Message {

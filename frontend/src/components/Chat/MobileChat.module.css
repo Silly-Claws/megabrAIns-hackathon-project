@@ -8,17 +8,6 @@
   overflow: hidden;
 }
 
-.Menu__arrowIcon__wrapper {
-  width: auto;
-  height: fit-content;
-
-  padding: 12px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
-
 .Toggle__button {
   height: 48px;
   width: 48px;
@@ -112,7 +101,7 @@
 
 .Minimize__icon__wrapper {
   display: flex;
-  padding: calc(var(--default-spacing) * 2) var(--default-spacing);
+  padding: var(--spacing-md);
   justify-content: end;
 }
 

@@ -57,8 +57,9 @@
   /* keep scrolling functional but hide native scrollbars */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+
   gap: 12px;
-  padding: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-md);
   overflow: auto;
   flex: 1 1 auto;
 }

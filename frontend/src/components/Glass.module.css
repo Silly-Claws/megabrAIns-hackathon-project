@@ -1,9 +1,5 @@
 .Glass {
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.3)
-  );
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);

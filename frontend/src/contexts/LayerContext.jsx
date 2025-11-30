@@ -48,6 +48,7 @@ export function LayerContextProvider({ children }) {
   const activeHeatIdsRef = useRef([]);
   const heatLayersRef = useRef({});
   const [mapRef, setMapRef] = useState(null);
+  const [acceptanceHeatmap, setAcceptanceHeatmap] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,6 +77,7 @@ export function LayerContextProvider({ children }) {
       }
 
       setHeatmaps(newHeatmaps);
+      console.log(newHeatmaps);
     };
 
     fetchData();
@@ -114,28 +116,34 @@ export function LayerContextProvider({ children }) {
         const layerData = result.find(layer => layer.name === "acceptance");
 
         if (layerData?.points) {
-          setHeatmaps(prev => ({
-            ...prev,
-            acceptance: {
-              points: layerData.points.map(p => [
-                p.coordinate.lat,
-                p.coordinate.lon,
-                p.weight
-              ]),
-              gradient: initialGradients.acceptance
-            }
-          }));
+          setAcceptanceHeatmap({
+            points: layerData.points.map(p => [
+              p.coordinate.lat,
+              p.coordinate.lon,
+              p.weight,
+            ]),
+            gradient: initialGradients.acceptance,
+          });
         }
       } catch (err) {
         console.error(err.message);
       }
     }
 
+    const points =
+      id === "acceptance"
+        ? acceptanceHeatmap?.points
+        : heatmaps[id]?.points;
+
+    const gradient =
+      id === "acceptance"
+        ? acceptanceHeatmap?.gradient
+        : heatmaps[id]?.gradient;
+
     const heat = setHeatMap({
       map: mapRef.current,
-      points: heatmaps[id].points,
-      gradient: heatmaps[id].gradient,
-      radius: 50
+      points: points,
+      gradient,
     });
 
     heatLayersRef.current[id] = heat;

@@ -1,8 +1,10 @@
 package sk.sillyclaws.megabrainshackathonproject.services;
 
 import lombok.Data;
+import org.springframework.stereotype.Service;
 
 @Data
+@Service
 public class UserParametersService {
     private float minPopulation;
     private float maxPopulation;
@@ -14,10 +16,10 @@ public class UserParametersService {
     private float schoolSearchRadiusMeters;
 
     private float maxCultureDistanceMeters;
-    private float minCultureDistanceMeters;
+    private float minCultureNearby;
     private float cultureSearchRadiusMeters;
 
     private float maxSocialDistanceMeters;
-    private float minSocialDistanceMeters;
+    private float minSocialNearby;
     private float socialSearchRadiusMeters;
 }

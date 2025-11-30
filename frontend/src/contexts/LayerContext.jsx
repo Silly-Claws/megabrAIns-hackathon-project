@@ -8,9 +8,9 @@ const LayerContext = createContext(null);
 export function LayerContextProvider({ children }) {
   const initialGradients = {
     population: {
-      0.0: "rgba(255,0,0,0.0)",
-      0.01: "rgba(255,0,0)",
-      1.0: "rgb(255,0,0)"
+      0.0: "rgba(0,0,0,0)",
+      0.025: "rgba(128,0,0,0.5)",
+      0.05: "rgba(255,0,0,1)"
     },
     transportation: {
       0.0: "rgba(0,0,0,0)",
@@ -130,7 +130,7 @@ export function LayerContextProvider({ children }) {
   }
 
   return (
-    <LayerContext.Provider value={{ setMapRef, availableLayers, enableHeatmap, disableHeatmap, disableAllHeatmaps, activeHeatIds }}>
+    <LayerContext.Provider value={{ setMapRef, mapRef, availableLayers, enableHeatmap, disableHeatmap, disableAllHeatmaps, activeHeatIds }}>
       {children}
     </LayerContext.Provider>
   );

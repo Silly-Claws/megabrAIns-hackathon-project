@@ -7,6 +7,8 @@ import Chat from "./components/Chat/Chat.jsx";
 import MobileChat from "./components/Chat/MobileChat.jsx";
 import { useState } from "react";
 import { useWindow } from "./hooks/useWindow.js";
+import {Zoom} from "leaflet/src/control/Control.Zoom.js";
+import ZoomButton from "./components/mapUtils/ZoomButton.jsx";
 
 function App() {
   const [value, setValue] = useState("");
@@ -24,6 +26,7 @@ function App() {
     <div className={styles.Main__wrapper}>
       <Header className={styles.Header} />
       <Map className={styles.Map} />
+      <ZoomButton className={styles.Zoom__button} />
       {windowWidth > 478 ? (
         <Chat
           className={styles.Chat}

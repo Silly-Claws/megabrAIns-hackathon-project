@@ -3,6 +3,7 @@ import styles from "./Chat.module.css";
 import { AnimatePresence, motion } from "framer-motion";
 import stylesGlass from "../Glass.module.css";
 import ChatMessage from "../ChatMessage";
+import LayerPicker from "../LayerPicker.jsx";
 
 function Chat({ className, handleChange, inputValue }) {
   const [showLayers, setShowLayers] = useState(false);
@@ -198,23 +199,7 @@ function Chat({ className, handleChange, inputValue }) {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  {[
-                    "Population",
-                    "Population",
-                    "Population",
-                    "Population",
-                    "Population",
-                  ].map((item, idx) => (
-                    <motion.span
-                      key={idx}
-                      className={styles.Layer__item}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.05 }}
-                    >
-                      {item}
-                    </motion.span>
-                  ))}
+                  <LayerPicker />
                 </motion.div>
               )}
             </AnimatePresence>

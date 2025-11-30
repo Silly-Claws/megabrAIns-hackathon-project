@@ -37,9 +37,9 @@ export function LayerContextProvider({ children }) {
       1.0: "rgb(216,100,255)"
     },
     acceptance: {
-      0.0: "rgba(0,0,0,0)",
-      0.5: "rgba(0,255,197,0.5)",
-      1.0: "rgb(0,255,225)"
+      0.1: "rgba(255,0,0,1)",
+      0.5: "rgba(255,202,0,1)",
+      1.0: "rgb(0,255,3)"
     }
   };
 
@@ -102,8 +102,34 @@ export function LayerContextProvider({ children }) {
     },
   }
 
-  function enableHeatmap(id) {
+  async function enableHeatmap(id) {
     if (!id || !mapRef?.current || activeHeatIds.includes(id)) return;
+
+    if (id === "acceptance") {
+      try {
+        const response = await fetch("http://localhost:8080/map?acceptance=true");
+        if (!response.ok) throw new Error("Network response was not ok");
+
+        const result = await response.json();
+        const layerData = result.find(layer => layer.name === "acceptance");
+
+        if (layerData?.points) {
+          setHeatmaps(prev => ({
+            ...prev,
+            acceptance: {
+              points: layerData.points.map(p => [
+                p.coordinate.lat,
+                p.coordinate.lon,
+                p.weight
+              ]),
+              gradient: initialGradients.acceptance
+            }
+          }));
+        }
+      } catch (err) {
+        console.error(err.message);
+      }
+    }
 
     const heat = setHeatMap({
       map: mapRef.current,

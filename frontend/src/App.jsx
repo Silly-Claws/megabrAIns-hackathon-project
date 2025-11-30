@@ -7,7 +7,10 @@ import Chat from "./components/Chat/Chat.jsx";
 import MobileChat from "./components/Chat/MobileChat.jsx";
 import { useState } from "react";
 import { useWindow } from "./hooks/useWindow.js";
+
 import { useChat } from "./hooks/useChat.js";
+
+import {Zoom} from "leaflet/src/control/Control.Zoom.js";
 
 import ZoomButton from "./components/mapUtils/ZoomButton.jsx";
 

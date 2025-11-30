@@ -4,8 +4,6 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  height: 100%;
-  width: 100%;
 }
 
 .Menu__arrowIcon__wrapper {
@@ -63,7 +61,6 @@
   padding: var(--spacing-md);
   overflow: auto;
   flex: 1 1 auto;
-  min-height: 0;
 }
 
 /* Chrome, Safari, Opera */

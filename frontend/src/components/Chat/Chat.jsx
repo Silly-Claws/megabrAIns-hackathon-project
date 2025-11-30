@@ -28,11 +28,11 @@ function Chat({
       }
       initial={{
         width: 0,
+        height: 0,
         opacity: 0,
       }}
       animate={{
         width: isExpanded ? "37.5%" : 60,
-        minWidth: isExpanded ? "320px" : "unset",
         height: isExpanded
           ? "calc(100vh - var(--header-height) - 16px - 8px)"
           : "60px",
@@ -137,21 +137,19 @@ function Chat({
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
                     >
-                      <span>
-                        {index % 2 === 0 ? (
-                          <ChatMessage
-                            text={item}
-                            author="user"
-                            messageBlockWidth={350}
-                          />
-                        ) : (
-                          <ChatMessage
-                            text={item}
-                            author="gpt"
-                            messageBlockWidth={350}
-                          />
-                        )}
-                      </span>
+                      {index % 2 === 0 ? (
+                        <ChatMessage
+                          text={item}
+                          author="user"
+                          messageBlockWidth={300}
+                        />
+                      ) : (
+                        <ChatMessage
+                          text={item}
+                          author="gpt"
+                          messageBlockWidth={300}
+                        />
+                      )}
                     </motion.div>
                   ))}
                 </AnimatePresence>

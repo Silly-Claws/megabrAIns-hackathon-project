@@ -247,19 +247,19 @@ public class LayersService {
             // =====================
             // 4) SOCIAL SERVICES
             // =====================
-            if (userParametersService.getMinSocialDistanceMeters() > 0) {
+            if (userParametersService.getMinSocialNearby() > 0) {
                 criteria++;
                 int count = countNearby(gp, socials, userParametersService.getSocialSearchRadiusMeters());
-                totalScore += Math.min(1f, count / userParametersService.getMinSocialDistanceMeters());
+                totalScore += Math.min(1f, count / userParametersService.getMinSocialNearby());
             }
 
             // =====================
             // 5) CULTURE
             // =====================
-            if (userParametersService.getMinCultureDistanceMeters() > 0) {
+            if (userParametersService.getMinCultureNearby() > 0) {
                 criteria++;
                 int count = countNearby(gp, culture, userParametersService.getCultureSearchRadiusMeters());
-                totalScore += Math.min(1f, count / userParametersService.getMinCultureDistanceMeters());
+                totalScore += Math.min(1f, count / userParametersService.getMinCultureNearby());
             }
 
             float finalScore = criteria == 0 ? 0 : totalScore / criteria;

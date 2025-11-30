@@ -20,8 +20,8 @@
 }
 
 .Toggle__button {
-  height: 36px;
-  width: 36px;
+  height: 48px;
+  width: 48px;
   border-radius: var(--default-border-r);
 
   display: flex;
@@ -46,28 +46,34 @@
 }
 
 .Chat__input {
-  margin: 8px;
+  width: auto;
+  height: auto;
+
   border-radius: var(--default-border-r);
   outline: none;
   border: none;
   flex-grow: 1;
   padding: var(--default-spacing);
+
+  resize: none;
+}
+
+.Chat__wrapper {
+  height: 48px;
+
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  align-items: center;
 }
 
 .Button {
-  height: 40px;
-  width: 80px;
+  height: 48px;
+  width: 48px;
   border-radius: var(--default-border-r);
 
   outline: none;
   border: none;
-}
-
-.Chat__wrapper {
-  display: flex;
-  gap: var(--default-spacing);
-  padding: var(--default-spacing);
-  align-items: center;
 }
 
 .Layer__list {
@@ -108,4 +114,16 @@
   display: flex;
   padding: calc(var(--default-spacing) * 2) var(--default-spacing);
   justify-content: end;
+}
+
+.User__Message {
+  display: flex;
+
+  justify-content: end;
+}
+
+.GPT__Message {
+  display: flex;
+
+  justify-content: start;
 }
